@@ -2,50 +2,16 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Havalı Sosyal Sayfa + Efektler + Şarkılar</title>
+  <title>Ali Mert - Sosyal Sayfa</title>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body, html {
-      height: 100%;
-      font-family: 'Segoe UI', sans-serif;
-      overflow: hidden;
-      color: white;
-    }
-
-    /* 🎬 Siyah Arka Plan */
     body {
       background-color: #000;
-      position: relative;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
       overflow: hidden;
     }
 
-    /* Kıvılcım Efekti */
-    .spark {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: #ff00ff;
-      border-radius: 50%;
-      animation: sparkAnimation 1s infinite;
-    }
-
-    @keyframes sparkAnimation {
-      0% {
-        transform: translate(0, 0);
-        opacity: 1;
-      }
-      100% {
-        transform: translate(random(-100px, 100px), random(-100px, 100px));
-        opacity: 0;
-      }
-    }
-
-    /* Neon Pembe Yazılar + Yanıp Sönme Efekti */
     .container {
       position: absolute;
       top: 2cm;
@@ -53,25 +19,25 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      color: white;
-      animation: fadeIn 3s ease-out;
     }
 
+    /* 🔮 Neon efekt yalnızca hover'da */
     .neon-text {
       font-size: 36px;
       font-weight: bold;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .neon-text:hover {
       color: #ff00ff;
       text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
       animation: blink 1s infinite alternate;
     }
 
     @keyframes blink {
-      0% {
-        opacity: 1;
-      }
-      100% {
-        opacity: 0;
-      }
+      0% { opacity: 1; }
+      100% { opacity: 0.5; }
     }
 
     a.social-link {
@@ -87,19 +53,6 @@
       transform: scale(1.05);
     }
 
-    /* Geçiş animasyonu */
-    @keyframes fadeIn {
-      0% {
-        opacity: 0;
-        transform: translateY(50px);
-      }
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    /* Buton stilleri */
     .music-button {
       background-color: #ff00ff;
       border: none;
@@ -115,88 +68,61 @@
       transform: scale(1.1);
     }
 
-    /* Arka plan müziği */
-    .playNotice {
-      position: fixed;
-      bottom: 10px;
-      left: 10px;
-      color: gray;
-      font-size: 14px;
+    /* Hakkımda alanı */
+    .about-box {
+      position: absolute;
+      top: 2cm;
+      right: 2cm;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border: 1px solid #ff00ff;
+      border-radius: 10px;
+      max-width: 300px;
+      color: #fff;
+      font-size: 18px;
     }
   </style>
 </head>
 <body>
 
-  <!-- 🌐 Sosyal medya bağlantıları -->
+  <!-- Sol Taraftaki İçerik -->
   <div class="container">
-    <div class="neon-text">Sosyal Medya Bağlantıları:</div>
+    <div class="neon-text">Sosyal Medya Bağlantıları</div>
 
-    <a class="social-link" href="https://www.instagram.com" target="_blank">
-      Instagram
-    </a>
+    <a class="social-link" href="https://www.instagram.com" target="_blank">Instagram</a>
+    <a class="social-link" href="https://store.steampowered.com/" target="_blank">Steam</a>
+    <a class="social-link" href="https://www.twitch.tv" target="_blank">Twitch</a>
+    <a class="social-link" href="https://www.youtube.com" target="_blank">YouTube</a>
 
-    <a class="social-link" href="https://store.steampowered.com/" target="_blank">
-      Steam
-    </a>
-
-    <a class="social-link" href="https://www.twitch.tv" target="_blank">
-      Twitch
-    </a>
-
-    <a class="social-link" href="https://www.youtube.com" target="_blank">
-      YouTube
-    </a>
-
-    <!-- Müzik Kontrol Butonları -->
     <button class="music-button" id="musicButton">Müzik Aç/Kapat</button>
   </div>
 
-  <!-- 🎵 Müzikler -->
-  <audio id="bg-music1" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop hidden></audio>
-  <audio id="bg-music2" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" loop hidden></audio>
-  <audio id="bg-music3" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" loop hidden></audio>
-
-  <div class="playNotice">
-    🎵 Arka planda müzik çalıyor (tarayıcı izni gerekebilir)
+  <!-- Sağ Taraftaki Hakkımda Kutusu -->
+  <div class="about-box">
+    <strong>Hakkımda</strong><br><br>
+    Merhaba ben Ali Mert, Twitch'te yayınlara başladım.
   </div>
+
+  <!-- 🎵 Yeni Müzik -->
+  <audio id="bg-music" src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" loop hidden></audio>
 
   <script>
     const musicButton = document.getElementById('musicButton');
-    const bgMusic1 = document.getElementById('bg-music1');
-    const bgMusic2 = document.getElementById('bg-music2');
-    const bgMusic3 = document.getElementById('bg-music3');
-    const musics = [bgMusic1, bgMusic2, bgMusic3];
-    let currentMusicIndex = -1;
+    const bgMusic = document.getElementById('bg-music');
+    let isPlaying = false;
 
     musicButton.addEventListener('click', () => {
-      // Önceki müziği durdur
-      if (currentMusicIndex !== -1) {
-        musics[currentMusicIndex].pause();
-        musics[currentMusicIndex].currentTime = 0;
-      }
-
-      // Yeni müzik seç
-      currentMusicIndex = (currentMusicIndex + 1) % musics.length;
-      musics[currentMusicIndex].play();
-      musicButton.textContent = 'Müziği Durdur';
-
-      // Eğer müzik çalmıyorsa, başlat
-      if (musics[currentMusicIndex].paused) {
-        musics[currentMusicIndex].play();
+      if (!isPlaying) {
+        bgMusic.play();
         musicButton.textContent = 'Müziği Durdur';
       } else {
-        musics[currentMusicIndex].pause();
-        musics[currentMusicIndex].currentTime = 0;
-        musicButton.textContent = 'Müziği Başlat';
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+        musicButton.textContent = 'Müzik Aç/Kapat';
       }
+      isPlaying = !isPlaying;
     });
+  </script>
 
-    // Fare hareketiyle efekt tetikleme
-    document.body.addEventListener('mousemove', (e) => {
-      const spark = document.createElement('div');
-      spark.classList.add('spark');
-      spark.style.left = `${e.pageX}px`;
-      spark.style.top = `${e.pageY}px`;
-      document.body.append
-::contentReference[oaicite:0]{index=0}
- 
+</body>
+</html>
