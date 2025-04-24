@@ -22,7 +22,7 @@
       background-color: #000;
     }
 
-    /* Neon Pembe Yazılar */
+    /* Neon Pembe Yazılar + Yanıp Sönme Efekti */
     .container {
       position: absolute;
       top: 2cm;
@@ -39,11 +39,16 @@
       font-weight: bold;
       color: #ff00ff;
       text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
-      transition: color 0.3s ease;
+      animation: blink 1s infinite alternate;
     }
 
-    .neon-text:hover {
-      color: #ff00ff;
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 0;
+      }
     }
 
     a.social-link {
@@ -51,26 +56,12 @@
       text-decoration: none;
       font-size: 22px;
       font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 10px;
       transition: color 0.3s ease, transform 0.3s ease;
     }
 
     a.social-link:hover {
       color: #ff00ff;
       transform: scale(1.05);
-    }
-
-    .icon {
-      width: 24px;
-      height: 24px;
-    }
-
-    .icon img {
-      width: 100%;
-      height: auto;
-      border-radius: 5px;
     }
 
     /* Geçiş animasyonu */
@@ -118,25 +109,14 @@
     <div class="neon-text">Sosyal Medya Bağlantıları:</div>
 
     <a class="social-link" href="https://www.instagram.com" target="_blank">
-      <div class="icon">
-        <!-- Modern Instagram Logo -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-      </div>
       Instagram
     </a>
 
     <a class="social-link" href="https://store.steampowered.com/" target="_blank">
-      <div class="icon">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="Steam">
-      </div>
       Steam
     </a>
 
     <a class="social-link" href="https://www.twitch.tv" target="_blank">
-      <div class="icon">
-        <!-- Siyah Twitch Logo -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Twitch_logo_2019_black.svg" alt="Twitch">
-      </div>
       Twitch
     </a>
 
@@ -144,8 +124,10 @@
     <button class="music-button" id="musicButton">Müziği Başlat</button>
   </div>
 
-  <!-- 🎵 Arka Plan Müzik: Imagine Dragons - Believer (Görünmeyen ve Arka Planda) -->
-  <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop hidden></audio>
+  <!-- 🎵 Arka Plan Müzik: Imagine Dragons - Believer (YouTube Embed) -->
+  <div style="position: fixed; bottom: 10px; left: 10px; width: 100%; height: 315px;">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZI9NwWQ1_D8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+  </div>
 
   <div class="playNotice">
     🎵 Arka planda müzik çalıyor (tarayıcı izni gerekebilir)
