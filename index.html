@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sade Sosyal Medya</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #4267B2;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    #loginSection, #postSection {
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 1rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 10px 15px;
+      margin-top: 10px;
+      background-color: #4267B2;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .post {
+      background-color: #f9f9f9;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .like {
+      color: #4267B2;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Sade Sosyal Medya</h1>
+  </header>
+
+  <section id="loginSection">
+    <h2>Giriş Yap</h2>
+    <input type="text" id="usernameInput" placeholder="Kullanıcı adınızı girin">
+    <button onclick="login()">Giriş</button>
+  </section>
+
+  <section id="postSection" style="display: none;">
+    <h2>Merhaba, <span id="usernameDisplay"></span> 👋</h2>
+    <input type="text" id="postContent" placeholder="Ne düşünüyorsun?">
+    <button onclick="addPost()">Paylaş</button>
+
+    <div id="postList"></div>
+  </section>
+
+  <script>
+    let username = "";
+
+    function login() {
+      const input = document.getElementById("usernameInput").value;
+      if (input.trim() !== "") {
+        username = input;
+        document.getElementById("loginSection").style.display = "none";
+        document.getElementById("postSection").style.display = "block";
+        document.getElementById("usernameDisplay").innerText = username;
+      }
+    }
+
+    function addPost() {
+      const content = document.getElementById("postContent").value;
+      if (content.trim() === "") return;
+
+      const postDiv = document.createElement("div");
+      postDiv.className = "post";
+      postDiv.innerHTML = `
+        <strong>${username}</strong>: ${content}<br>
+        <span class="like" onclick="likePost(this)">👍 Beğen (<span class="likeCount">0</span>)</span>
+      `;
+
+      document.getElementById("postList").prepend(postDiv);
+      document.getElementById("postContent").value = "";
+    }
+
+    function likePost(el) {
+      const countSpan = el.querySelector(".likeCount");
+      let count = parseInt(countSpan.innerText);
+      countSpan.innerText = count + 1;
+    }
+  </script>
+
+</body>
+</html>
