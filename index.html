@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Havalı Sosyal Sayfa + Video + Müzik</title>
+  <title>Havalı Sosyal Sayfa + Siyah Arka Plan + Believer</title>
   <style>
     * {
       margin: 0;
@@ -17,19 +17,12 @@
       color: white;
     }
 
-    /* 🎬 Arka plan videosu */
-    #bg-video {
-      position: fixed;
-      right: 0;
-      bottom: 0;
-      min-width: 100%;
-      min-height: 100%;
-      z-index: -1;
-      object-fit: cover;
-      filter: brightness(0.5); /* Karartma efekti */
+    /* 🎬 Siyah Arka Plan */
+    body {
+      background-color: #000;
     }
 
-    /* Animasyonlu yazılar */
+    /* Neon Pembe Yazılar */
     .container {
       position: absolute;
       top: 30px;
@@ -41,16 +34,16 @@
       animation: fadeIn 3s ease-out;
     }
 
-    /* Neon efektli yazı */
     .neon-text {
       font-size: 30px;
       font-weight: bold;
-      text-shadow: 0 0 5px #1da1f2, 0 0 10px #1da1f2, 0 0 20px #1da1f2, 0 0 40px #1da1f2;
+      color: #ff00ff;
+      text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
       transition: color 0.3s ease;
     }
 
     .neon-text:hover {
-      color: #1da1f2;
+      color: #ff00ff;
     }
 
     a.social-link {
@@ -65,7 +58,7 @@
     }
 
     a.social-link:hover {
-      color: #1da1f2;
+      color: #ff00ff;
       transform: scale(1.05);
     }
 
@@ -104,12 +97,6 @@
 </head>
 <body>
 
-  <!-- 🎬 Arka Plan Videosu -->
-  <video autoplay muted loop playsinline id="bg-video">
-    <source src="https://cdn.coverr.co/videos/coverr-night-city-1524/1080p.mp4" type="video/mp4">
-    Tarayıcınız video etiketini desteklemiyor.
-  </video>
-
   <!-- 🌐 Sosyal medya bağlantıları -->
   <div class="container">
     <div class="neon-text">Sosyal Medya Bağlantıları:</div>
@@ -133,8 +120,8 @@
     </a>
   </div>
 
-  <!-- 🎵 Arka Plan Müzik -->
-  <audio id="bg-music" src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" autoplay loop></audio>
+  <!-- 🎵 Arka Plan Müzik: Imagine Dragons - Believer -->
+  <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" autoplay loop></audio>
 
   <div class="playNotice">
     🎵 Arka planda müzik çalıyor (tarayıcı izni gerekebilir)
