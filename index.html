@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Havalı Sosyal Sayfa + Siyah Arka Plan + Believer</title>
+  <title>Havalı Sosyal Sayfa + Siyah Arka Plan + Şarkı</title>
   <style>
     * {
       margin: 0;
@@ -120,9 +120,37 @@
       Twitch
     </a>
 
+    <a class="social-link" href="https://www.youtube.com" target="_blank">
+      YouTube
+    </a>
+
     <!-- Müzik Kontrol Butonu -->
     <button class="music-button" id="musicButton">Müziği Başlat</button>
   </div>
 
-  <!-- 🎵 Imagine Dragons - Believer Müzik -->
-  <audio id="bg-music" src="https://www.soundhelix.com/examples/mp
+  <!-- 🎵 Yeni Şarkı -->
+  <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" loop hidden></audio>
+
+  <div class="playNotice">
+    🎵 Arka planda müzik çalıyor (tarayıcı izni gerekebilir)
+  </div>
+
+  <script>
+    const musicButton = document.getElementById('musicButton');
+    const bgMusic = document.getElementById('bg-music');
+    let isPlaying = false;
+
+    musicButton.addEventListener('click', () => {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicButton.textContent = 'Müziği Başlat';
+      } else {
+        bgMusic.play();
+        musicButton.textContent = 'Müziği Durdur';
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
+
+</body>
+</html>
