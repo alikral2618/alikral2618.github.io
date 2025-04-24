@@ -2,22 +2,55 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Havalı Sosyal Sayfa + Müzik</title>
+  <title>Havalı Sosyal Sayfa + Video + Müzik</title>
   <style>
-    body {
+    * {
       margin: 0;
-      background-color: #000;
-      color: white;
-      font-family: 'Segoe UI', sans-serif;
+      padding: 0;
+      box-sizing: border-box;
     }
 
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      color: white;
+    }
+
+    /* 🎬 Arka plan videosu */
+    #bg-video {
+      position: fixed;
+      right: 0;
+      bottom: 0;
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -1;
+      object-fit: cover;
+      filter: brightness(0.5); /* Karartma efekti */
+    }
+
+    /* Animasyonlu yazılar */
     .container {
       position: absolute;
-      top: 20px;
-      left: 30px;
+      top: 30px;
+      left: 40px;
       display: flex;
       flex-direction: column;
       gap: 20px;
+      color: white;
+      animation: fadeIn 3s ease-out;
+    }
+
+    /* Neon efektli yazı */
+    .neon-text {
+      font-size: 30px;
+      font-weight: bold;
+      text-shadow: 0 0 5px #1da1f2, 0 0 10px #1da1f2, 0 0 20px #1da1f2, 0 0 40px #1da1f2;
+      transition: color 0.3s ease;
+    }
+
+    .neon-text:hover {
+      color: #1da1f2;
     }
 
     a.social-link {
@@ -47,6 +80,19 @@
       border-radius: 5px;
     }
 
+    /* Geçiş animasyonu */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Arka plan müziği */
     .playNotice {
       position: fixed;
       bottom: 10px;
@@ -58,25 +104,36 @@
 </head>
 <body>
 
+  <!-- 🎬 Arka Plan Videosu -->
+  <video autoplay muted loop playsinline id="bg-video">
+    <source src="https://cdn.coverr.co/videos/coverr-night-city-1524/1080p.mp4" type="video/mp4">
+    Tarayıcınız video etiketini desteklemiyor.
+  </video>
+
+  <!-- 🌐 Sosyal medya bağlantıları -->
   <div class="container">
-    <a class="social-link" href="https://www.instagram.com" target="_blank">Instagram</a>
+    <div class="neon-text">Sosyal Medya Bağlantıları:</div>
+
+    <a class="social-link" href="https://www.instagram.com" target="_blank">
+      Instagram
+    </a>
 
     <a class="social-link" href="https://store.steampowered.com/" target="_blank">
       <div class="icon">
         <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="Steam">
       </div>
-      <span>Steam</span>
+      Steam
     </a>
 
     <a class="social-link" href="https://www.twitch.tv" target="_blank">
       <div class="icon">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Twitch_logo_2019.svg" alt="Twitch">
       </div>
-      <span>Twitch</span>
+      Twitch
     </a>
   </div>
 
-  <!-- 🎵 Telifsiz arka plan müziği -->
+  <!-- 🎵 Arka Plan Müzik -->
   <audio id="bg-music" src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" autoplay loop></audio>
 
   <div class="playNotice">
