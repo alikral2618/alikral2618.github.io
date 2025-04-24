@@ -148,9 +148,7 @@
     </a>
 
     <!-- Müzik Kontrol Butonları -->
-    <button class="music-button" id="musicButton1">Şarkı 1</button>
-    <button class="music-button" id="musicButton2">Şarkı 2</button>
-    <button class="music-button" id="musicButton3">Şarkı 3</button>
+    <button class="music-button" id="musicButton">Müzik Aç/Kapat</button>
   </div>
 
   <!-- 🎵 Müzikler -->
@@ -163,37 +161,42 @@
   </div>
 
   <script>
-    const musicButtons = document.querySelectorAll('.music-button');
-    const musics = [
-      document.getElementById('bg-music1'),
-      document.getElementById('bg-music2'),
-      document.getElementById('bg-music3')
-    ];
+    const musicButton = document.getElementById('musicButton');
+    const bgMusic1 = document.getElementById('bg-music1');
+    const bgMusic2 = document.getElementById('bg-music2');
+    const bgMusic3 = document.getElementById('bg-music3');
+    const musics = [bgMusic1, bgMusic2, bgMusic3];
+    let currentMusicIndex = -1;
 
-    musicButtons.forEach((button, index) => {
-      button.addEventListener('click', () => {
-        // Tüm müzikleri durdur
-        musics.forEach((music, i) => {
-          if (i !== index) {
-            music.pause();
-            music.currentTime = 0;
-          }
-        });
+    musicButton.addEventListener('click', () => {
+      // Önceki müziği durdur
+      if (currentMusicIndex !== -1) {
+        musics[currentMusicIndex].pause();
+        musics[currentMusicIndex].currentTime = 0;
+      }
 
-        // Seçilen müziği başlat/durdur
-        const selectedMusic = musics[index];
-        if (selectedMusic.paused) {
-          selectedMusic.play();
-          button.textContent = `Duraklat ${button.textContent.split(' ')[1]}`;
-        } else {
-          selectedMusic.pause();
-          selectedMusic.currentTime = 0;
-          button.textContent = `Şarkı ${index + 1}`;
-        }
-      });
+      // Yeni müzik seç
+      currentMusicIndex = (currentMusicIndex + 1) % musics.length;
+      musics[currentMusicIndex].play();
+      musicButton.textContent = 'Müziği Durdur';
+
+      // Eğer müzik çalmıyorsa, başlat
+      if (musics[currentMusicIndex].paused) {
+        musics[currentMusicIndex].play();
+        musicButton.textContent = 'Müziği Durdur';
+      } else {
+        musics[currentMusicIndex].pause();
+        musics[currentMusicIndex].currentTime = 0;
+        musicButton.textContent = 'Müziği Başlat';
+      }
     });
 
-    // Kıvılcım efekti
-    document.body.addEventListener('click', (e)
+    // Fare hareketiyle efekt tetikleme
+    document.body.addEventListener('mousemove', (e) => {
+      const spark = document.createElement('div');
+      spark.classList.add('spark');
+      spark.style.left = `${e.pageX}px`;
+      spark.style.top = `${e.pageY}px`;
+      document.body.append
 ::contentReference[oaicite:0]{index=0}
  
