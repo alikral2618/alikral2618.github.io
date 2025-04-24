@@ -14,7 +14,7 @@
 
     .container {
       position: absolute;
-      top: 3.5cm;
+      top: 30cm;
       left: 2cm;
       display: flex;
       flex-direction: column;
@@ -52,24 +52,29 @@
       transform: scale(1.05);
     }
 
-    .music-button {
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .music-button, .volume-button {
       background-color: #ff00ff;
       border: none;
       color: white;
-      padding: 12px 24px;
-      font-size: 18px;
+      padding: 8px 16px;
+      font-size: 14px;
       cursor: pointer;
-      margin-top: 20px;
       transition: transform 0.2s;
     }
 
-    .music-button:hover {
+    .music-button:hover, .volume-button:hover {
       transform: scale(1.1);
     }
 
     .about-box {
       position: absolute;
-      top: 3.5cm;
+      top: 30cm;
       right: 2cm;
       background-color: rgba(255, 255, 255, 0.05);
       padding: 20px;
@@ -82,7 +87,7 @@
 
     .video-wrapper {
       position: absolute;
-      top: 45%;
+      top: 25%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 640px;
@@ -106,7 +111,10 @@
     <a class="social-link" href="https://www.twitch.tv" target="_blank">Twitch</a>
     <a class="social-link" href="https://www.youtube.com" target="_blank">YouTube</a>
 
-    <button class="music-button" id="musicButton">Müzik Aç/Kapat</button>
+    <div class="button-group">
+      <button class="music-button" id="musicButton">Müzik Aç/Kapat</button>
+      <button class="volume-button" id="volumeButton">Sesi Azalt</button>
+    </div>
   </div>
 
   <!-- Sağ Taraftaki Hakkımda Kutusu -->
@@ -131,8 +139,10 @@
 
   <script>
     const musicButton = document.getElementById('musicButton');
+    const volumeButton = document.getElementById('volumeButton');
     const bgMusic = document.getElementById('bg-music');
     let isPlaying = false;
+    let currentVolume = 1.0;
 
     musicButton.addEventListener('click', () => {
       if (!isPlaying) {
@@ -144,6 +154,12 @@
         musicButton.textContent = 'Müzik Aç/Kapat';
       }
       isPlaying = !isPlaying;
+    });
+
+    volumeButton.addEventListener('click', () => {
+      currentVolume -= 0.2;
+      if (currentVolume <= 0) currentVolume = 1.0;
+      bgMusic.volume = currentVolume;
     });
   </script>
 
