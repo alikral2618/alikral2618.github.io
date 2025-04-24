@@ -2,28 +2,77 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Simsiyah Sayfa</title>
+  <title>Havalı Sosyal Sayfa</title>
   <style>
     body {
       margin: 0;
       background-color: #000;
       color: white;
-      font-family: 'Arial', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
     }
 
-    .logo {
+    .container {
       position: absolute;
       top: 20px;
       left: 30px;
-      font-size: 24px;
-      font-weight: bold;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    a.social-link {
       color: white;
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    a.social-link:hover {
+      color: #1da1f2; /* Hafif mavi parıltı */
+      transform: scale(1.05);
+    }
+
+    .icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Logolar yuvarlaksa köşesiz görünür */
+    .icon img {
+      width: 100%;
+      height: auto;
+      border-radius: 5px;
     }
   </style>
 </head>
 <body>
 
-  <div class="logo">Instagram</div>
+  <div class="container">
+    <!-- Instagram -->
+    <a class="social-link" href="https://www.instagram.com" target="_blank">
+      <span>Instagram</span>
+    </a>
+
+    <!-- Steam -->
+    <a class="social-link" href="https://store.steampowered.com/" target="_blank">
+      <div class="icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="Steam">
+      </div>
+      <span>Steam</span>
+    </a>
+
+    <!-- Twitch -->
+    <a class="social-link" href="https://www.twitch.tv" target="_blank">
+      <div class="icon">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Twitch_logo_2019.svg" alt="Twitch">
+      </div>
+      <span>Twitch</span>
+    </a>
+  </div>
 
 </body>
 </html>
