@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Havalı Sosyal Sayfa</title>
+  <title>Havalı Sosyal Sayfa + Müzik</title>
   <style>
     body {
       margin: 0;
@@ -32,7 +32,7 @@
     }
 
     a.social-link:hover {
-      color: #1da1f2; /* Hafif mavi parıltı */
+      color: #1da1f2;
       transform: scale(1.05);
     }
 
@@ -41,23 +41,26 @@
       height: 24px;
     }
 
-    /* Logolar yuvarlaksa köşesiz görünür */
     .icon img {
       width: 100%;
       height: auto;
       border-radius: 5px;
+    }
+
+    .playNotice {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      color: gray;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <!-- Instagram -->
-    <a class="social-link" href="https://www.instagram.com" target="_blank">
-      <span>Instagram</span>
-    </a>
+    <a class="social-link" href="https://www.instagram.com" target="_blank">Instagram</a>
 
-    <!-- Steam -->
     <a class="social-link" href="https://store.steampowered.com/" target="_blank">
       <div class="icon">
         <img src="https://upload.wikimedia.org/wikipedia/commons/8/83/Steam_icon_logo.svg" alt="Steam">
@@ -65,13 +68,19 @@
       <span>Steam</span>
     </a>
 
-    <!-- Twitch -->
     <a class="social-link" href="https://www.twitch.tv" target="_blank">
       <div class="icon">
         <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Twitch_logo_2019.svg" alt="Twitch">
       </div>
       <span>Twitch</span>
     </a>
+  </div>
+
+  <!-- 🎵 Telifsiz arka plan müziği -->
+  <audio id="bg-music" src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" autoplay loop></audio>
+
+  <div class="playNotice">
+    🎵 Arka planda müzik çalıyor (tarayıcı izni gerekebilir)
   </div>
 
 </body>
