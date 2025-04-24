@@ -3,112 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sade Sosyal Medya</title>
+  <title>Mini Sosyal Medya</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f2f5;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #e9ebee;
       margin: 0;
       padding: 0;
     }
 
     header {
-      background-color: #4267B2;
+      background-color: #1877f2;
       color: white;
-      padding: 1rem;
       text-align: center;
+      padding: 1rem;
     }
 
-    #loginSection, #postSection {
+    .container {
       max-width: 600px;
-      margin: 20px auto;
-      padding: 1rem;
+      margin: 2rem auto;
       background: white;
+      padding: 1rem;
       border-radius: 8px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    input[type="text"] {
+    input[type="text"], textarea {
       width: 100%;
       padding: 10px;
       margin-top: 10px;
       font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
     }
 
     button {
       padding: 10px 15px;
       margin-top: 10px;
-      background-color: #4267B2;
+      background-color: #1877f2;
       color: white;
       border: none;
+      border-radius: 5px;
       cursor: pointer;
     }
 
     .post {
-      background-color: #f9f9f9;
-      margin-top: 10px;
+      background-color: #f0f2f5;
       padding: 10px;
+      margin-top: 15px;
       border-radius: 5px;
     }
 
     .like {
-      color: #4267B2;
+      color: #1877f2;
       cursor: pointer;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Sade Sosyal Medya</h1>
+    <h1>Mini Sosyal Medya</h1>
   </header>
 
-  <section id="loginSection">
+  <div class="container" id="loginBox">
     <h2>Giriş Yap</h2>
-    <input type="text" id="usernameInput" placeholder="Kullanıcı adınızı girin">
+    <input type="text" id="username" placeholder="Kullanıcı adınızı girin">
     <button onclick="login()">Giriş</button>
-  </section>
+  </div>
 
-  <section id="postSection" style="display: none;">
-    <h2>Merhaba, <span id="usernameDisplay"></span> 👋</h2>
-    <input type="text" id="postContent" placeholder="Ne düşünüyorsun?">
+  <div class="container" id="appBox" style="display:none;">
+    <h2>Hoş geldin, <span id="displayUser"></span> 👋</h2>
+    <textarea id="postText" rows="3" placeholder="Ne düşünüyorsun?"></textarea>
     <button onclick="addPost()">Paylaş</button>
 
     <div id="postList"></div>
-  </section>
+  </div>
 
   <script>
     let username = "";
 
     function login() {
-      const input = document.getElementById("usernameInput").value;
-      if (input.trim() !== "") {
-        username = input;
-        document.getElementById("loginSection").style.display = "none";
-        document.getElementById("postSection").style.display = "block";
-        document.getElementById("usernameDisplay").innerText = username;
+      const userInput = document.getElementById("username").value.trim();
+      if (userInput) {
+        username = userInput;
+        document.getElementById("displayUser").innerText = username;
+        document.getElementById("loginBox").style.display = "none";
+        document.getElementById("appBox").style.display = "block";
       }
     }
 
     function addPost() {
-      const content = document.getElementById("postContent").value;
-      if (content.trim() === "") return;
+      const postContent = document.getElementById("postText").value.trim();
+      if (!postContent) return;
 
       const postDiv = document.createElement("div");
       postDiv.className = "post";
       postDiv.innerHTML = `
-        <strong>${username}</strong>: ${content}<br>
+        <strong>${username}</strong><br>
+        <p>${postContent}</p>
         <span class="like" onclick="likePost(this)">👍 Beğen (<span class="likeCount">0</span>)</span>
       `;
 
       document.getElementById("postList").prepend(postDiv);
-      document.getElementById("postContent").value = "";
+      document.getElementById("postText").value = "";
     }
 
     function likePost(el) {
-      const countSpan = el.querySelector(".likeCount");
-      let count = parseInt(countSpan.innerText);
-      countSpan.innerText = count + 1;
+      const countEl = el.querySelector(".likeCount");
+      let count = parseInt(countEl.innerText);
+      count++;
+      countEl.innerText = count;
     }
   </script>
 
