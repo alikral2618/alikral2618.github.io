@@ -25,8 +25,8 @@
     /* Neon Pembe Yazılar */
     .container {
       position: absolute;
-      top: 30px;
-      left: 40px;
+      top: 2cm;
+      left: 2cm;
       display: flex;
       flex-direction: column;
       gap: 20px;
@@ -93,6 +93,22 @@
       color: gray;
       font-size: 14px;
     }
+
+    /* Buton stilleri */
+    .music-button {
+      background-color: #ff00ff;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: transform 0.2s;
+    }
+
+    .music-button:hover {
+      transform: scale(1.1);
+    }
   </style>
 </head>
 <body>
@@ -118,19 +134,39 @@
 
     <a class="social-link" href="https://www.twitch.tv" target="_blank">
       <div class="icon">
-        <!-- Modern Twitch Logo -->
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/66/Twitch_logo_2019.svg" alt="Twitch">
+        <!-- Siyah Twitch Logo -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0d/Twitch_logo_2019_black.svg" alt="Twitch">
       </div>
       Twitch
     </a>
+
+    <!-- Müzik Kontrol Butonu -->
+    <button class="music-button" id="musicButton">Müziği Başlat</button>
   </div>
 
   <!-- 🎵 Arka Plan Müzik: Imagine Dragons - Believer (Görünmeyen ve Arka Planda) -->
-  <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" autoplay loop hidden></audio>
+  <audio id="bg-music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" loop hidden></audio>
 
   <div class="playNotice">
     🎵 Arka planda müzik çalıyor (tarayıcı izni gerekebilir)
   </div>
+
+  <script>
+    const musicButton = document.getElementById('musicButton');
+    const bgMusic = document.getElementById('bg-music');
+    let isPlaying = false;
+
+    musicButton.addEventListener('click', () => {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicButton.textContent = 'Müziği Başlat';
+      } else {
+        bgMusic.play();
+        musicButton.textContent = 'Müziği Durdur';
+      }
+      isPlaying = !isPlaying;
+    });
+  </script>
 
 </body>
 </html>
