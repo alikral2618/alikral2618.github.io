@@ -3,120 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mini Sosyal Medya</title>
+  <title>Simsiyah Sayfa</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #e9ebee;
       margin: 0;
-      padding: 0;
-    }
-
-    header {
-      background-color: #1877f2;
+      background-color: #000000;
       color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: 2rem auto;
-      background: white;
-      padding: 1rem;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-
-    input[type="text"], textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      padding: 10px 15px;
-      margin-top: 10px;
-      background-color: #1877f2;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    .post {
-      background-color: #f0f2f5;
-      padding: 10px;
-      margin-top: 15px;
-      border-radius: 5px;
-    }
-
-    .like {
-      color: #1877f2;
-      cursor: pointer;
-      font-size: 14px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>Mini Sosyal Medya</h1>
-  </header>
-
-  <div class="container" id="loginBox">
-    <h2>Giriş Yap</h2>
-    <input type="text" id="username" placeholder="Kullanıcı adınızı girin">
-    <button onclick="login()">Giriş</button>
-  </div>
-
-  <div class="container" id="appBox" style="display:none;">
-    <h2>Hoş geldin, <span id="displayUser"></span> 👋</h2>
-    <textarea id="postText" rows="3" placeholder="Ne düşünüyorsun?"></textarea>
-    <button onclick="addPost()">Paylaş</button>
-
-    <div id="postList"></div>
-  </div>
-
-  <script>
-    let username = "";
-
-    function login() {
-      const userInput = document.getElementById("username").value.trim();
-      if (userInput) {
-        username = userInput;
-        document.getElementById("displayUser").innerText = username;
-        document.getElementById("loginBox").style.display = "none";
-        document.getElementById("appBox").style.display = "block";
-      }
-    }
-
-    function addPost() {
-      const postContent = document.getElementById("postText").value.trim();
-      if (!postContent) return;
-
-      const postDiv = document.createElement("div");
-      postDiv.className = "post";
-      postDiv.innerHTML = `
-        <strong>${username}</strong><br>
-        <p>${postContent}</p>
-        <span class="like" onclick="likePost(this)">👍 Beğen (<span class="likeCount">0</span>)</span>
-      `;
-
-      document.getElementById("postList").prepend(postDiv);
-      document.getElementById("postText").value = "";
-    }
-
-    function likePost(el) {
-      const countEl = el.querySelector(".likeCount");
-      let count = parseInt(countEl.innerText);
-      count++;
-      countEl.innerText = count;
-    }
-  </script>
-
+  <h1>Simsiyah Bir Sayfa</h1>
 </body>
 </html>
