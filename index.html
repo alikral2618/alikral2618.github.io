@@ -76,15 +76,6 @@
       }
     }
 
-    /* Arka plan müziği */
-    .playNotice {
-      position: fixed;
-      bottom: 10px;
-      left: 10px;
-      color: gray;
-      font-size: 14px;
-    }
-
     /* Buton stilleri */
     .music-button {
       background-color: #ff00ff;
@@ -99,6 +90,15 @@
 
     .music-button:hover {
       transform: scale(1.1);
+    }
+
+    /* Arka plan müziği */
+    .playNotice {
+      position: fixed;
+      bottom: 10px;
+      left: 10px;
+      color: gray;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -124,31 +124,5 @@
     <button class="music-button" id="musicButton">Müziği Başlat</button>
   </div>
 
-  <!-- 🎵 Arka Plan Müzik: Imagine Dragons - Believer (YouTube Embed) -->
-  <div style="position: fixed; bottom: 10px; left: 10px; width: 100%; height: 315px;">
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZI9NwWQ1_D8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-
-  <div class="playNotice">
-    🎵 Arka planda müzik çalıyor (tarayıcı izni gerekebilir)
-  </div>
-
-  <script>
-    const musicButton = document.getElementById('musicButton');
-    const bgMusic = document.getElementById('bg-music');
-    let isPlaying = false;
-
-    musicButton.addEventListener('click', () => {
-      if (isPlaying) {
-        bgMusic.pause();
-        musicButton.textContent = 'Müziği Başlat';
-      } else {
-        bgMusic.play();
-        musicButton.textContent = 'Müziği Durdur';
-      }
-      isPlaying = !isPlaying;
-    });
-  </script>
-
-</body>
-</html>
+  <!-- 🎵 Imagine Dragons - Believer Müzik -->
+  <audio id="bg-music" src="https://www.soundhelix.com/examples/mp
