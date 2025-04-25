@@ -12,7 +12,6 @@
       overflow: hidden;
     }
 
-    /* Sol Tarafta Sosyal Medya Bağlantıları */
     .container {
       position: absolute;
       top: 30cm;
@@ -20,7 +19,6 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      align-items: flex-start;
     }
 
     .neon-text {
@@ -74,12 +72,10 @@
       transform: scale(1.1);
     }
 
-    /* Sağ Taraftaki Hakkımda Kutusu */
     .about-box {
       position: absolute;
       top: 30cm;
       right: 2cm;
-      width: 20%;
       background-color: rgba(255, 255, 255, 0.05);
       padding: 20px;
       border: 1px solid #ff00ff;
@@ -87,14 +83,26 @@
       max-width: 300px;
       color: #fff;
       font-size: 18px;
-      text-align: center;
     }
 
+    .video-wrapper {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 640px;
+      max-width: 90%;
+      height: 360px;
+      box-shadow: 0 0 30px #ff00ff;
+      border: 3px solid #ff00ff;
+      border-radius: 12px;
+      overflow: hidden;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Sol Taraftaki Sosyal Medya Bağlantıları -->
+  <!-- Sol Taraftaki İçerik -->
   <div class="container">
     <div class="neon-text">Sosyal Medya Bağlantıları</div>
 
@@ -113,6 +121,17 @@
   <div class="about-box">
     <strong>Hakkımda</strong><br><br>
     Merhaba ben Ali Mert, Twitch'te yayınlara başladım.
+  </div>
+
+  <!-- Ortadaki Video: YouTube Klibi -->
+  <div class="video-wrapper">
+    <iframe width="100%" height="100%"
+      src="https://www.youtube.com/embed/0MlnxInasEQ"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
   </div>
 
   <!-- 🎵 Arka Plan Müziği -->
