@@ -8,6 +8,7 @@
       margin: 0;
       overflow: hidden;
       font-family: 'Segoe UI', sans-serif;
+      transition: background-color 0.5s ease, color 0.5s ease;
     }
 
     /* Gece Arka Plan */
@@ -19,6 +20,18 @@
       height: 100%;
       object-fit: cover;
       z-index: -1;
+    }
+
+    /* Gece Teması */
+    body.night-mode {
+      background-color: #111;
+      color: white;
+    }
+
+    /* Gündüz Teması */
+    body.day-mode {
+      background-color: #fff;
+      color: black;
     }
 
     /* Diğer stil ayarları buraya eklenebilir */
@@ -115,7 +128,7 @@
     }
   </style>
 </head>
-<body>
+<body class="night-mode">
 
   <!-- Arka Plan Video (YouTube Embed) -->
   <iframe class="background-video" src="https://www.youtube.com/embed/P5fLRnkZ6HQ?autoplay=1&mute=1&loop=1&playlist=P5fLRnkZ6HQ"
@@ -131,7 +144,7 @@
     <a class="social-link" href="https://store.steampowered.com/" target="_blank">Steam</a>
     <a class="social-link" href="https://www.twitch.tv" target="_blank">Twitch</a>
     <a class="social-link" href="https://www.youtube.com" target="_blank">YouTube</a>
-    
+
     <div class="button-group">
       <button class="music-button" id="musicButton">Müzik Aç/Kapat</button>
       <button class="volume-button" id="volumeButton">Sesi Azalt</button>
@@ -154,6 +167,9 @@
       allowfullscreen>
     </iframe>
   </div>
+
+  <!-- Gece/Gündüz Teması Butonu -->
+  <button id="themeToggle" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; background-color: #ff00ff; color: white; border: none; border-radius: 5px;">Gece/Gündüz</button>
 
   <!-- Arka Plan Müziği -->
   <audio id="bg-music" src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" loop hidden></audio>
@@ -181,6 +197,13 @@
       currentVolume -= 0.2;
       if (currentVolume <= 0) currentVolume = 1.0;
       bgMusic.volume = currentVolume;
+    });
+
+    // Gece ve Gündüz Teması Geçişi
+    const themeToggleButton = document.getElementById('themeToggle');
+    themeToggleButton.addEventListener('click', () => {
+      document.body.classList.toggle('night-mode');
+      document.body.classList.toggle('day-mode');
     });
   </script>
 
