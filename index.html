@@ -32,7 +32,7 @@
       left: 3vw;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 15px;
       align-items: flex-start;
     }
 
@@ -59,7 +59,7 @@
       gap: 10px;
       color: var(--text-color);
       text-decoration: none;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
       transition: color 0.3s ease, transform 0.3s ease;
     }
@@ -70,14 +70,15 @@
     }
 
     .social-link img {
-      width: 24px;
-      height: 24px;
+      width: 20px;
+      height: 20px;
     }
 
     .button-group {
-      margin-top: 20px;
+      margin-top: 10px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
       gap: 10px;
     }
 
@@ -97,11 +98,6 @@
       color: var(--text-color);
       font-size: 16px;
       text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    body.light-theme .about-box {
-      background-color: rgba(0, 0, 0, 0.05);
     }
 
     .video-wrapper {
@@ -149,7 +145,6 @@
       }
 
       .button-group {
-        flex-direction: column;
         align-items: center;
       }
     }
@@ -165,22 +160,25 @@
     <div class="neon-text">Sosyal Medya Bağlantıları</div>
 
     <a class="social-link" href="https://www.instagram.com" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384031.png" alt="Instagram">Instagram
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/instagram.svg" alt="Instagram">Instagram
     </a>
     <a class="social-link" href="https://store.steampowered.com/" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968703.png" alt="Steam">Steam
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/steam.svg" alt="Steam">Steam
     </a>
     <a class="social-link" href="https://www.twitch.tv" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968839.png" alt="Twitch">Twitch
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/twitch.svg" alt="Twitch">Twitch
     </a>
     <a class="social-link" href="https://www.youtube.com" target="_blank">
-      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">YouTube
+      <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube">YouTube
     </a>
 
+    <!-- Müzik Aç/Kapat Butonu -->
+    <button id="musicToggle">Müziği Durdur</button>
+
+    <!-- Ses Kontrol -->
     <div class="button-group">
       <label for="volumeSlider">Ses Seviyesi</label>
       <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
-      <button id="musicToggle">Müziği Aç/Kapat</button>
     </div>
   </div>
 
@@ -202,7 +200,7 @@
   </div>
 
   <!-- Arka Plan Müziği -->
-  <audio id="bg-music" src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Harris_Heller/StreamBeats_-_Lofi/StreamBeats_-_Lofi_-_01_Tokyo_Cafe.mp3" loop autoplay></audio>
+  <audio id="bg-music" src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Harris_Heller/StreamBeats_-_Lofi/StreamBeats_-_Lofi_-_10_Late_Night_Vibes.mp3" loop autoplay></audio>
 
   <script>
     const volumeSlider = document.getElementById('volumeSlider');
@@ -223,12 +221,11 @@
         musicToggle.textContent = "Müziği Aç";
       } else {
         bgMusic.play();
-        musicToggle.textContent = "Müziği Kapat";
+        musicToggle.textContent = "Müziği Durdur";
       }
       isPlaying = !isPlaying;
     });
 
-    // Tema geçişi
     const currentTheme = localStorage.getItem("theme");
     if (currentTheme === "light") {
       document.body.classList.add("light-theme");
