@@ -240,4 +240,31 @@
     <iframe width="100%" height="100%"
       src="https://www.youtube.com/embed/0MlnxInasEQ"
       title="YouTube video player"
-     
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- Arka Plan Müziği -->
+  <audio id="bg-music" src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Harris_Heller/StreamBeats_-_Lofi/StreamBeats_-_Lofi_-_10_Late_Night_Vibes.mp3" loop autoplay></audio>
+
+  <script>
+    const volumeSlider = document.getElementById('volumeSlider');
+    const musicToggle = document.getElementById('musicToggle');
+    const bgMusic = document.getElementById('bg-music');
+    const themeToggle = document.getElementById('themeToggle');
+
+    let isPlaying = true;
+    bgMusic.volume = parseFloat(volumeSlider.value);
+
+    volumeSlider.addEventListener('input', () => {
+      bgMusic.volume = parseFloat(volumeSlider.value);
+    });
+
+    musicToggle.addEventListener('click', () => {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicToggle.textContent = "Müziği Aç";
+      } else {
+        bgMusic
