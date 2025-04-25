@@ -8,6 +8,7 @@
       --bg-color: #000;
       --text-color: #fff;
       --accent-color: #ff00ff;
+      --neon-color: #ff00ff;
     }
 
     body {
@@ -24,6 +25,7 @@
       --bg-color: #f4f4f4;
       --text-color: #000;
       --accent-color: #0066ff;
+      --neon-color: #ff00ff;
     }
 
     .container {
@@ -40,11 +42,12 @@
       font-size: 32px;
       font-weight: bold;
       color: var(--text-color);
+      text-shadow: 0 0 5px var(--neon-color), 0 0 10px var(--neon-color), 0 0 20px var(--neon-color), 0 0 40px var(--neon-color);
     }
 
     .neon-text:hover {
-      color: var(--accent-color);
-      text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--accent-color), 0 0 20px var(--accent-color), 0 0 40px var(--accent-color);
+      color: var(--neon-color);
+      text-shadow: 0 0 5px var(--neon-color), 0 0 10px var(--neon-color), 0 0 20px var(--neon-color), 0 0 40px var(--neon-color);
       animation: blink 1s infinite alternate;
     }
 
@@ -62,16 +65,18 @@
       font-size: 18px;
       font-weight: bold;
       transition: color 0.3s ease, transform 0.3s ease;
+      text-shadow: 0 0 5px var(--neon-color), 0 0 10px var(--neon-color), 0 0 20px var(--neon-color), 0 0 40px var(--neon-color);
     }
 
     .social-link:hover {
-      color: var(--accent-color);
+      color: var(--neon-color);
       transform: scale(1.05);
     }
 
     .social-link img {
       width: 20px;
       height: 20px;
+      filter: drop-shadow(0 0 5px var(--neon-color)) drop-shadow(0 0 10px var(--neon-color));
     }
 
     .button-group {
@@ -84,6 +89,32 @@
 
     input[type=range] {
       width: 150px;
+      -webkit-appearance: none;
+      appearance: none;
+      background: var(--accent-color);
+      height: 10px;
+      border-radius: 5px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    input[type=range]:hover {
+      background: var(--neon-color);
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--neon-color);
+      cursor: pointer;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+      height: 10px;
+      border-radius: 5px;
     }
 
     .about-box {
@@ -93,7 +124,7 @@
       width: 25%;
       background-color: rgba(255, 255, 255, 0.05);
       padding: 20px;
-      border: 1px solid var(--accent-color);
+      border: 1px solid var(--neon-color);
       border-radius: 10px;
       color: var(--text-color);
       font-size: 16px;
@@ -109,8 +140,8 @@
       max-width: 640px;
       height: auto;
       aspect-ratio: 16 / 9;
-      box-shadow: 0 0 30px var(--accent-color);
-      border: 3px solid var(--accent-color);
+      box-shadow: 0 0 30px var(--neon-color);
+      border: 3px solid var(--neon-color);
       border-radius: 12px;
       overflow: hidden;
     }
@@ -120,13 +151,29 @@
       top: 10px;
       right: 10px;
       z-index: 1000;
-      background-color: var(--accent-color);
+      background-color: var(--neon-color);
       color: var(--text-color);
       border: none;
       padding: 10px 15px;
       cursor: pointer;
       border-radius: 5px;
       font-weight: bold;
+    }
+
+    #musicToggle {
+      background-color: var(--neon-color);
+      color: var(--text-color);
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+      text-shadow: 0 0 5px var(--neon-color), 0 0 10px var(--neon-color);
+    }
+
+    #musicToggle:hover {
+      background-color: #ff66ff;
     }
 
     @media (max-width: 768px) {
@@ -220,29 +267,4 @@
         bgMusic.pause();
         musicToggle.textContent = "Müziği Aç";
       } else {
-        bgMusic.play();
-        musicToggle.textContent = "Müziği Durdur";
-      }
-      isPlaying = !isPlaying;
-    });
-
-    const currentTheme = localStorage.getItem("theme");
-    if (currentTheme === "light") {
-      document.body.classList.add("light-theme");
-    }
-
-    themeToggle.addEventListener("click", () => {
-      document.body.classList.toggle("light-theme");
-      const newTheme = document.body.classList.contains("light-theme") ? "light" : "dark";
-      localStorage.setItem("theme", newTheme);
-    });
-
-    window.addEventListener('load', () => {
-      bgMusic.play().catch(() => {
-        console.log("Tarayıcı otomatik çalmayı engelledi.");
-      });
-    });
-  </script>
-
-</body>
-</html>
+        bgMusic
