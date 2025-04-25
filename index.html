@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsive meta tag eklendi -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ali Mert - Sosyal Sayfa</title>
   <style>
     body {
@@ -11,23 +11,27 @@
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       overflow: hidden;
+      font-size: 16px;
     }
 
-    /* Sosyal Medya (Sol Taraf) */
-    .container {
+    /* Gece Modu Arka Plan Video */
+    .background-video {
       position: absolute;
-      top: 10cm;
-      left: 2cm;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: flex-start;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.5);
     }
 
+    /* Neon Efektli Yazılar */
     .neon-text {
       font-size: 36px;
       font-weight: bold;
-      color: white;
+      color: #fff;
+      text-align: center;
       transition: all 0.3s ease;
     }
 
@@ -40,6 +44,17 @@
     @keyframes blink {
       0% { opacity: 1; }
       100% { opacity: 0.5; }
+    }
+
+    /* Sol Taraf Sosyal Medya Bağlantıları */
+    .container {
+      position: absolute;
+      top: 10%;
+      left: 2%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
     }
 
     a.social-link {
@@ -78,8 +93,8 @@
     /* Hakkımda (Sağ Taraf) */
     .about-box {
       position: absolute;
-      top: 10cm;
-      right: 2cm;
+      top: 15%;
+      right: 2%;
       width: 20%;
       background-color: rgba(255, 255, 255, 0.05);
       padding: 20px;
@@ -94,7 +109,7 @@
     /* Ortadaki Klip */
     .video-wrapper {
       position: absolute;
-      top: 50%;
+      top: 40%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 640px;
@@ -104,71 +119,26 @@
       border: 3px solid #ff00ff;
       border-radius: 12px;
       overflow: hidden;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Fade-in Animasyonu */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Sol Taraf -->
+  <!-- Gece Modu Arka Plan Video -->
+  <video class="background-video" autoplay loop muted>
+    <source src="https://www.example.com/night-sky-video.mp4" type="video/mp4">
+  </video>
+
+  <!-- Sol Taraf Sosyal Medya Bağlantıları -->
   <div class="container">
     <div class="neon-text">Sosyal Medya Bağlantıları</div>
-
     <a class="social-link" href="https://www.instagram.com" target="_blank">Instagram</a>
     <a class="social-link" href="https://store.steampowered.com/" target="_blank">Steam</a>
     <a class="social-link" href="https://www.twitch.tv" target="_blank">Twitch</a>
-    <a class="social-link" href="https://www.youtube.com" target="_blank">YouTube</a>
-
-    <div class="button-group">
-      <button class="music-button" id="musicButton">Müzik Aç/Kapat</button>
-      <button class="volume-button" id="volumeButton">Sesi Azalt</button>
-    </div>
-  </div>
-
-  <!-- Sağ Taraf -->
-  <div class="about-box">
-    <strong>Hakkımda</strong><br><br>
-    Merhaba ben Ali Mert, Twitch'te yayınlara başladım.
-  </div>
-
-  <!-- Ortadaki Klip -->
-  <div class="video-wrapper">
-    <iframe width="115%" height="115%"
-      src="https://www.youtube.com/embed/0MlnxInasEQ"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <!-- Arka Plan Müziği -->
-  <audio id="bg-music" src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" loop hidden></audio>
-
-  <script>
-    const musicButton = document.getElementById('musicButton');
-    const volumeButton = document.getElementById('volumeButton');
-    const bgMusic = document.getElementById('bg-music');
-    let isPlaying = false;
-    let currentVolume = 1.0;
-
-    musicButton.addEventListener('click', () => {
-      if (!isPlaying) {
-        bgMusic.play();
-        musicButton.textContent = 'Müziği Durdur';
-      } else {
-        bgMusic.pause();
-        bgMusic.currentTime = 0;
-        musicButton.textContent = 'Müzik Aç/Kapat';
-      }
-      isPlaying = !isPlaying;
-    });
-
-    volumeButton.addEventListener('click', () => {
-      currentVolume -= 0.2;
-      if (currentVolume <= 0) currentVolume = 1.0;
-      bgMusic.volume = currentVolume;
-    });
-  </script>
-
-</body>
-</html>
