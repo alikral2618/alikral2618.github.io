@@ -28,6 +28,18 @@
       --neon-color: #ff00ff;
     }
 
+    /* Arka Plan - Uzay Videosu */
+    .background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.5);
+    }
+
     .container {
       position: absolute;
       top: 15vh;
@@ -155,6 +167,11 @@
 
   <!-- Tema Değiştir -->
   <button id="themeToggle">Tema Değiştir</button>
+
+  <!-- Gece ve Gündüz Modu Arka Plan Video -->
+  <video class="background-video" autoplay loop muted>
+    <source src="https://www.example.com/space-video.mp4" type="video/mp4">
+  </video>
 
   <!-- Sol Menü -->
   <div class="container">
