@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
@@ -8,33 +9,12 @@
       margin: 0;
       overflow: hidden;
       font-family: 'Segoe UI', sans-serif;
-      transition: background-color 0.5s ease, color 0.5s ease;
-    }
-
-    /* Gece Teması */
-    body.night-mode {
-      background-color: #111;
+      background: url('dust2-background.jpg') no-repeat center center fixed;
+      background-size: cover; /* Görselin ekran boyutuna göre ayarlanmasını sağlar */
       color: white;
     }
 
-    /* Gündüz Teması */
-    body.day-mode {
-      background-color: #fff;
-      color: black;
-    }
-
-    /* Uzay Arka Planı (Video) */
-    .background-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-      filter: brightness(0.5);
-    }
-
+    /* Genel stil ayarları */
     .container {
       position: absolute;
       top: 10%;
@@ -42,7 +22,7 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      color: white;
+      align-items: flex-start;
     }
 
     .neon-text {
@@ -52,32 +32,29 @@
       transition: all 0.3s ease;
     }
 
+    .neon-text:hover {
+      color: #ff00ff;
+      text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+      animation: blink 1s infinite alternate;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+
     /* Sosyal Medya Bağlantıları */
     .social-link {
+      color: white;
+      text-decoration: none;
       font-size: 24px;
       font-weight: bold;
-      display: block;
-      margin: 10px 0;
-      color: white; /* Neon pembe renk yazılardan kaldırıldı */
-      text-decoration: none;
-      transition: transform 0.3s ease, color 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease;
     }
 
     .social-link:hover {
+      color: #ff00ff;
       transform: scale(1.05);
-      animation: neon 1.5s infinite alternate; /* Neon efekt eklenmiş */
-    }
-
-    @keyframes neon {
-      0% {
-        color: #ff00ff;
-      }
-      50% {
-        color: #ff66ff;
-      }
-      100% {
-        color: #ff00ff;
-      }
     }
 
     .button-group {
@@ -86,7 +63,7 @@
       margin-top: 20px;
     }
 
-    .music-button {
+    .music-button, .volume-button {
       background-color: #ff00ff;
       border: none;
       color: white;
@@ -96,11 +73,11 @@
       transition: transform 0.2s;
     }
 
-    .music-button:hover {
+    .music-button:hover, .volume-button:hover {
       transform: scale(1.1);
     }
 
-    /* Hakkımda (Sağ Taraf) */
+    /* Hakkımda */
     .about-box {
       position: absolute;
       top: 15%;
@@ -110,7 +87,6 @@
       padding: 20px;
       border: 1px solid #ff00ff;
       border-radius: 10px;
-      max-width: 300px;
       color: #fff;
       font-size: 18px;
       text-align: center;
@@ -119,7 +95,7 @@
     /* Ortadaki Klip */
     .video-wrapper {
       position: absolute;
-      top: 40%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
       width: 640px;
@@ -130,49 +106,26 @@
       border-radius: 12px;
       overflow: hidden;
     }
-
-    /* Gece/Gündüz Teması Butonu */
-    #themeToggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      padding: 10px 20px;
-      background-color: #ff00ff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    #themeToggle:hover {
-      transform: scale(1.05);
-    }
   </style>
 </head>
-<body class="night-mode">
-
-  <!-- Uzay Arka Plan Video -->
-  <video class="background-video" autoplay loop muted>
-    <source src="https://www.example.com/space-video.mp4" type="video/mp4">
-  </video>
+<body>
 
   <!-- Sol Taraf -->
   <div class="container">
     <div class="neon-text">Sosyal Medya Bağlantıları</div>
 
-    <!-- Sosyal Medya Bağlantıları (Yalnızca Yazılar) -->
-    <a class="social-link" href="https://www.instagram.com" target="_blank">Instagram</a>
-    <a class="social-link" href="https://store.steampowered.com/" target="_blank">Steam</a>
-    <a class="social-link" href="https://www.twitch.tv" target="_blank">Twitch</a>
-    <a class="social-link" href="https://www.youtube.com" target="_blank">YouTube</a>
-
+    <a class="social-link" href="https://www.instagram.com/alimertkkarakaya?igsh=ZDUwYnFocTNla3pv" target="_blank">Instagram</a>
+    <a class="social-link" href="https://steamcommunity.com/id/BrownFast/" target="_blank">Steam</a>
+    <a class="social-link" href="https://www.twitch.tv/brownfast" target="_blank">Twitch</a>
+    <a class="social-link" href="https://youtube.com/@j3yerrortr" target="_blank">YouTube</a>
+    
     <div class="button-group">
       <button class="music-button" id="musicButton">Müzik Aç/Kapat</button>
+      <button class="volume-button" id="volumeButton">Sesi Azalt</button>
     </div>
   </div>
 
-  <!-- Sağ Taraf -->
+  <!-- Hakkımda -->
   <div class="about-box">
     <strong>Hakkımda</strong><br><br>
     Merhaba ben Ali Mert, Twitch'te yayınlara başladım.
@@ -180,25 +133,24 @@
 
   <!-- Ortadaki Klip -->
   <div class="video-wrapper">
-    <iframe width="115%" height="115%" 
-      src="https://www.youtube.com/embed/0MlnxInasEQ" 
+    <iframe width="115%" height="115%"
+      src="https://www.youtube.com/embed/0MlnxInasEQ"
       title="YouTube video player"
-      frameborder="0" 
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen>
     </iframe>
   </div>
-
-  <!-- Gece/Gündüz Teması Butonu -->
-  <button id="themeToggle">Gece/Gündüz</button>
 
   <!-- Arka Plan Müziği -->
   <audio id="bg-music" src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" loop hidden></audio>
 
   <script>
     const musicButton = document.getElementById('musicButton');
+    const volumeButton = document.getElementById('volumeButton');
     const bgMusic = document.getElementById('bg-music');
     let isPlaying = false;
+    let currentVolume = 1.0;
 
     musicButton.addEventListener('click', () => {
       if (!isPlaying) {
@@ -212,11 +164,10 @@
       isPlaying = !isPlaying;
     });
 
-    // Gece ve Gündüz Teması Geçişi
-    const themeToggleButton = document.getElementById('themeToggle');
-    themeToggleButton.addEventListener('click', () => {
-      document.body.classList.toggle('night-mode');
-      document.body.classList.toggle('day-mode');
+    volumeButton.addEventListener('click', () => {
+      currentVolume -= 0.2;
+      if (currentVolume <= 0) currentVolume = 1.0;
+      bgMusic.volume = currentVolume;
     });
   </script>
 
