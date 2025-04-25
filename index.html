@@ -23,6 +23,18 @@
       color: black;
     }
 
+    /* Uzay Arka Planı (Video) */
+    .background-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.5);
+    }
+
     .container {
       position: absolute;
       top: 10%;
@@ -40,27 +52,24 @@
       transition: all 0.3s ease;
     }
 
-    .neon-text:hover {
-      color: #ff00ff;
-      text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
-      animation: blink 1s infinite alternate;
-    }
-
-    @keyframes blink {
-      0% { opacity: 1; }
-      100% { opacity: 0.5; }
-    }
-
-    a.social-link {
-      color: #ff00ff; /* Neon Pembe */
-      text-decoration: none;
+    /* Sosyal Medya Bağlantıları */
+    .social-link {
       font-size: 24px;
       font-weight: bold;
-      transition: color 0.3s ease, transform 0.3s ease;
+      transition: transform 0.3s ease;
+      color: #ff00ff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
-    a.social-link:hover {
+    .social-link:hover {
       transform: scale(1.05);
+    }
+
+    .social-link img {
+      width: 30px;
+      height: 30px;
     }
 
     .button-group {
@@ -135,18 +144,35 @@
 </head>
 <body class="night-mode">
 
+  <!-- Uzay Arka Plan Video -->
+  <video class="background-video" autoplay loop muted>
+    <source src="https://www.example.com/space-video.mp4" type="video/mp4">
+  </video>
+
   <!-- Sol Taraf -->
   <div class="container">
     <div class="neon-text">Sosyal Medya Bağlantıları</div>
 
-    <a class="social-link" href="https://www.instagram.com" target="_blank">Instagram</a>
-    <a class="social-link" href="https://store.steampowered.com/" target="_blank">Steam</a>
-    <a class="social-link" href="https://www.twitch.tv" target="_blank">Twitch</a>
-    <a class="social-link" href="https://www.youtube.com" target="_blank">YouTube</a>
+    <!-- Sosyal Medya Bağlantıları ve Logoları -->
+    <a class="social-link" href="https://www.instagram.com" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
+      Instagram
+    </a>
+    <a class="social-link" href="https://store.steampowered.com/" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Steam_logo.png" alt="Steam Logo">
+      Steam
+    </a>
+    <a class="social-link" href="https://www.twitch.tv" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Twitch_logo_2019.svg" alt="Twitch Logo">
+      Twitch
+    </a>
+    <a class="social-link" href="https://www.youtube.com" target="_blank">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube Logo">
+      YouTube
+    </a>
 
     <div class="button-group">
       <button class="music-button" id="musicButton">Müzik Aç/Kapat</button>
-      <button class="volume-button" id="volumeButton">Sesi Azalt</button>
     </div>
   </div>
 
@@ -175,36 +201,4 @@
 
   <script>
     const musicButton = document.getElementById('musicButton');
-    const volumeButton = document.getElementById('volumeButton');
     const bgMusic = document.getElementById('bg-music');
-    let isPlaying = false;
-    let currentVolume = 1.0;
-
-    musicButton.addEventListener('click', () => {
-      if (!isPlaying) {
-        bgMusic.play();
-        musicButton.textContent = 'Müziği Durdur';
-      } else {
-        bgMusic.pause();
-        bgMusic.currentTime = 0;
-        musicButton.textContent = 'Müzik Aç/Kapat';
-      }
-      isPlaying = !isPlaying;
-    });
-
-    volumeButton.addEventListener('click', () => {
-      currentVolume -= 0.2;
-      if (currentVolume <= 0) currentVolume = 1.0;
-      bgMusic.volume = currentVolume;
-    });
-
-    // Gece ve Gündüz Teması Geçişi
-    const themeToggleButton = document.getElementById('themeToggle');
-    themeToggleButton.addEventListener('click', () => {
-      document.body.classList.toggle('night-mode');
-      document.body.classList.toggle('day-mode');
-    });
-  </script>
-
-</body>
-</html>
