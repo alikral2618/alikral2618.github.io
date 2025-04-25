@@ -40,7 +40,6 @@
       font-size: 32px;
       font-weight: bold;
       color: var(--text-color);
-      transition: all 0.3s ease;
     }
 
     .neon-text:hover {
@@ -54,7 +53,10 @@
       100% { opacity: 0.5; }
     }
 
-    a.social-link {
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
       color: var(--text-color);
       text-decoration: none;
       font-size: 20px;
@@ -62,18 +64,25 @@
       transition: color 0.3s ease, transform 0.3s ease;
     }
 
-    a.social-link:hover {
+    .social-link:hover {
       color: var(--accent-color);
       transform: scale(1.05);
     }
 
+    .social-link img {
+      width: 24px;
+      height: 24px;
+    }
+
     .button-group {
       margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
 
     input[type=range] {
       width: 150px;
-      margin-top: 10px;
     }
 
     .about-box {
@@ -110,7 +119,6 @@
       overflow: hidden;
     }
 
-    /* Tema butonu */
     #themeToggle {
       position: fixed;
       top: 10px;
@@ -123,14 +131,8 @@
       cursor: pointer;
       border-radius: 5px;
       font-weight: bold;
-      transition: background-color 0.3s ease;
     }
 
-    #themeToggle:hover {
-      background-color: #cc00cc;
-    }
-
-    /* 🔧 Mobil Uyum */
     @media (max-width: 768px) {
       .container, .about-box {
         position: static;
@@ -140,46 +142,49 @@
         align-items: center;
       }
 
-      .about-box {
-        margin-top: 30px;
-      }
-
-      .neon-text {
-        font-size: 24px;
-      }
-
-      a.social-link {
-        font-size: 18px;
-      }
-
       .video-wrapper {
         top: auto;
         position: relative;
         margin: 40px auto;
+      }
+
+      .button-group {
+        flex-direction: column;
+        align-items: center;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Tema Değiştir Butonu -->
+  <!-- Tema Değiştir -->
   <button id="themeToggle">Tema Değiştir</button>
 
-  <!-- Sol Taraf -->
+  <!-- Sol Menü -->
   <div class="container">
     <div class="neon-text">Sosyal Medya Bağlantıları</div>
-    <a class="social-link" href="https://www.instagram.com" target="_blank">Instagram</a>
-    <a class="social-link" href="https://store.steampowered.com/" target="_blank">Steam</a>
-    <a class="social-link" href="https://www.twitch.tv" target="_blank">Twitch</a>
-    <a class="social-link" href="https://www.youtube.com" target="_blank">YouTube</a>
+
+    <a class="social-link" href="https://www.instagram.com" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384031.png" alt="Instagram">Instagram
+    </a>
+    <a class="social-link" href="https://store.steampowered.com/" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968703.png" alt="Steam">Steam
+    </a>
+    <a class="social-link" href="https://www.twitch.tv" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968839.png" alt="Twitch">Twitch
+    </a>
+    <a class="social-link" href="https://www.youtube.com" target="_blank">
+      <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">YouTube
+    </a>
 
     <div class="button-group">
-      <label for="volumeSlider">Ses Seviyesi</label><br>
+      <label for="volumeSlider">Ses Seviyesi</label>
       <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+      <button id="musicToggle">Müziği Aç/Kapat</button>
     </div>
   </div>
 
-  <!-- Sağ Taraf -->
+  <!-- Hakkımda -->
   <div class="about-box">
     <strong>Hakkımda</strong><br><br>
     Merhaba ben Ali Mert, Twitch'te yayınlara başladım.
@@ -201,13 +206,26 @@
 
   <script>
     const volumeSlider = document.getElementById('volumeSlider');
+    const musicToggle = document.getElementById('musicToggle');
     const bgMusic = document.getElementById('bg-music');
     const themeToggle = document.getElementById('themeToggle');
 
-    // Ses kontrolü
+    let isPlaying = true;
     bgMusic.volume = parseFloat(volumeSlider.value);
+
     volumeSlider.addEventListener('input', () => {
       bgMusic.volume = parseFloat(volumeSlider.value);
+    });
+
+    musicToggle.addEventListener('click', () => {
+      if (isPlaying) {
+        bgMusic.pause();
+        musicToggle.textContent = "Müziği Aç";
+      } else {
+        bgMusic.play();
+        musicToggle.textContent = "Müziği Kapat";
+      }
+      isPlaying = !isPlaying;
     });
 
     // Tema geçişi
@@ -222,7 +240,6 @@
       localStorage.setItem("theme", newTheme);
     });
 
-    // Müzik otomatik başlat (tarayıcı iznine bağlı)
     window.addEventListener('load', () => {
       bgMusic.play().catch(() => {
         console.log("Tarayıcı otomatik çalmayı engelledi.");
