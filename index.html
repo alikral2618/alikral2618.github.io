@@ -11,17 +11,6 @@
       transition: background-color 0.5s ease, color 0.5s ease;
     }
 
-    /* Gece Arka Plan */
-    .background-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-
     /* Gece Teması */
     body.night-mode {
       background-color: #111;
@@ -34,7 +23,6 @@
       color: black;
     }
 
-    /* Diğer stil ayarları buraya eklenebilir */
     .container {
       position: absolute;
       top: 10%;
@@ -126,15 +114,27 @@
       border-radius: 12px;
       overflow: hidden;
     }
+
+    /* Gece/Gündüz Teması Butonu */
+    #themeToggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 10px 20px;
+      background-color: #ff00ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    #themeToggle:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body class="night-mode">
-
-  <!-- Arka Plan Video (YouTube Embed) -->
-  <iframe class="background-video" src="https://www.youtube.com/embed/P5fLRnkZ6HQ?autoplay=1&mute=1&loop=1&playlist=P5fLRnkZ6HQ"
-    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-  </iframe>
 
   <!-- Sol Taraf -->
   <div class="container">
@@ -169,7 +169,7 @@
   </div>
 
   <!-- Gece/Gündüz Teması Butonu -->
-  <button id="themeToggle" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; background-color: #ff00ff; color: white; border: none; border-radius: 5px;">Gece/Gündüz</button>
+  <button id="themeToggle">Gece/Gündüz</button>
 
   <!-- Arka Plan Müziği -->
   <audio id="bg-music" src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" loop hidden></audio>
