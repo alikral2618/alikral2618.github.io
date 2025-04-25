@@ -12,13 +12,16 @@
       overflow: hidden;
     }
 
+    /* Sosyal Medya Bağlantıları */
     .container {
       position: absolute;
       top: 30cm;
-      left: 2cm;
+      left: 0;
+      width: 20%;
       display: flex;
       flex-direction: column;
       gap: 20px;
+      align-items: center;
     }
 
     .neon-text {
@@ -72,10 +75,12 @@
       transform: scale(1.1);
     }
 
+    /* Hakkımda Kısmı */
     .about-box {
       position: absolute;
       top: 30cm;
-      right: 2cm;
+      right: 0;
+      width: 20%;
       background-color: rgba(255, 255, 255, 0.05);
       padding: 20px;
       border: 1px solid #ff00ff;
@@ -83,13 +88,15 @@
       max-width: 300px;
       color: #fff;
       font-size: 18px;
+      text-align: center;
     }
 
+    /* Video (Klip) */
     .video-wrapper {
       position: absolute;
-      top: 25%;
+      top: 20%;
       left: 50%;
-      transform: translate(-50%, -50%);
+      transform: translateX(-50%);
       width: 640px;
       max-width: 90%;
       height: 360px;
