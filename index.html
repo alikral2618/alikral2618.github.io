@@ -13,7 +13,7 @@
       overflow: hidden;
     }
 
-    /* Ana Konteyner (Flexbox ile düzen) */
+    /* Sosyal Medya (Sol Taraf) */
     .container {
       position: absolute;
       top: 10cm;
@@ -22,8 +22,6 @@
       flex-direction: column;
       gap: 20px;
       align-items: flex-start;
-      width: 100%;
-      padding: 0 2cm; /* Sağ ve sol boşluk ekleyelim */
     }
 
     .neon-text {
@@ -106,73 +104,6 @@
       border: 3px solid #ff00ff;
       border-radius: 12px;
       overflow: hidden;
-    }
-
-    /* Mobil Uyumluluk İçin Medya Sorguları */
-    @media (max-width: 768px) {
-      .container {
-        top: 2cm;
-        left: 1cm;
-        padding: 0 1cm; /* Mobilde daha küçük boşluklar */
-      }
-
-      .about-box {
-        position: relative;
-        top: auto;
-        right: auto;
-        width: 80%;
-        max-width: 90%;
-        margin: 0 auto;
-        margin-top: 20px;
-      }
-
-      .video-wrapper {
-        top: auto;
-        left: auto;
-        transform: translate(-50%, -20%);
-        width: 100%;
-        max-width: 100%;
-        height: 200px; /* Mobilde video boyutunu küçült */
-      }
-
-      .neon-text {
-        font-size: 28px; /* Mobilde daha küçük yazı boyutu */
-      }
-
-      .social-link {
-        font-size: 20px; /* Mobilde daha küçük sosyal medya linkleri */
-      }
-
-      .button-group {
-        flex-direction: column; /* Butonları dikey yap */
-        margin-top: 10px;
-      }
-
-      .music-button, .volume-button {
-        padding: 6px 12px; /* Buton boyutunu küçült */
-      }
-    }
-
-    @media (max-width: 480px) {
-      .neon-text {
-        font-size: 24px; /* Çok küçük ekranlar için daha küçük yazı */
-      }
-
-      .social-link {
-        font-size: 18px; /* Çok küçük ekranlar için daha küçük font */
-      }
-
-      .music-button, .volume-button {
-        padding: 4px 8px; /* Butonları daha da küçült */
-      }
-
-      .video-wrapper {
-        height: 180px; /* Çok küçük ekranlar için video boyutunu küçült */
-      }
-
-      .container {
-        top: 1cm;
-      }
     }
   </style>
 </head>
