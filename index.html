@@ -4,13 +4,26 @@
   <meta charset="UTF-8">
   <title>Ali Mert - Sosyal Sayfa</title>
   <style>
+    :root {
+      --bg-color: #000;
+      --text-color: #fff;
+      --accent-color: #ff00ff;
+    }
+
     body {
-      background-color: #000;
-      color: white;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       font-family: 'Segoe UI', sans-serif;
       margin: 0;
       padding: 0;
       overflow-x: hidden;
+      transition: all 0.3s ease;
+    }
+
+    body.light-theme {
+      --bg-color: #f4f4f4;
+      --text-color: #000;
+      --accent-color: #0066ff;
     }
 
     .container {
@@ -26,13 +39,13 @@
     .neon-text {
       font-size: 32px;
       font-weight: bold;
-      color: white;
+      color: var(--text-color);
       transition: all 0.3s ease;
     }
 
     .neon-text:hover {
-      color: #ff00ff;
-      text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+      color: var(--accent-color);
+      text-shadow: 0 0 5px var(--accent-color), 0 0 10px var(--accent-color), 0 0 20px var(--accent-color), 0 0 40px var(--accent-color);
       animation: blink 1s infinite alternate;
     }
 
@@ -42,7 +55,7 @@
     }
 
     a.social-link {
-      color: white;
+      color: var(--text-color);
       text-decoration: none;
       font-size: 20px;
       font-weight: bold;
@@ -50,7 +63,7 @@
     }
 
     a.social-link:hover {
-      color: #ff00ff;
+      color: var(--accent-color);
       transform: scale(1.05);
     }
 
@@ -70,11 +83,16 @@
       width: 25%;
       background-color: rgba(255, 255, 255, 0.05);
       padding: 20px;
-      border: 1px solid #ff00ff;
+      border: 1px solid var(--accent-color);
       border-radius: 10px;
-      color: #fff;
+      color: var(--text-color);
       font-size: 16px;
       text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    body.light-theme .about-box {
+      background-color: rgba(0, 0, 0, 0.05);
     }
 
     .video-wrapper {
@@ -86,10 +104,30 @@
       max-width: 640px;
       height: auto;
       aspect-ratio: 16 / 9;
-      box-shadow: 0 0 30px #ff00ff;
-      border: 3px solid #ff00ff;
+      box-shadow: 0 0 30px var(--accent-color);
+      border: 3px solid var(--accent-color);
       border-radius: 12px;
       overflow: hidden;
+    }
+
+    /* Tema butonu */
+    #themeToggle {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      z-index: 1000;
+      background-color: var(--accent-color);
+      color: var(--text-color);
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    #themeToggle:hover {
+      background-color: #cc00cc;
     }
 
     /* 🔧 Mobil Uyum */
@@ -113,11 +151,21 @@
       a.social-link {
         font-size: 18px;
       }
+
+      .video-wrapper {
+        top: auto;
+        position: relative;
+        margin: 40px auto;
+      }
     }
   </style>
 </head>
 <body>
 
+  <!-- Tema Değiştir Butonu -->
+  <button id="themeToggle">Tema Değiştir</button>
+
+  <!-- Sol Taraf -->
   <div class="container">
     <div class="neon-text">Sosyal Medya Bağlantıları</div>
     <a class="social-link" href="https://www.instagram.com" target="_blank">Instagram</a>
@@ -131,11 +179,13 @@
     </div>
   </div>
 
+  <!-- Sağ Taraf -->
   <div class="about-box">
     <strong>Hakkımda</strong><br><br>
     Merhaba ben Ali Mert, Twitch'te yayınlara başladım.
   </div>
 
+  <!-- Ortadaki Klip -->
   <div class="video-wrapper">
     <iframe width="100%" height="100%"
       src="https://www.youtube.com/embed/0MlnxInasEQ"
@@ -152,19 +202,30 @@
   <script>
     const volumeSlider = document.getElementById('volumeSlider');
     const bgMusic = document.getElementById('bg-music');
+    const themeToggle = document.getElementById('themeToggle');
 
-    // Otomatik başlatma için ses başlangıç seviyesini ayarla
+    // Ses kontrolü
     bgMusic.volume = parseFloat(volumeSlider.value);
-
-    // Slider ile sesi kontrol et
     volumeSlider.addEventListener('input', () => {
       bgMusic.volume = parseFloat(volumeSlider.value);
     });
 
-    // Otomatik çalmaya çalış (bazı tarayıcılar engelleyebilir)
+    // Tema geçişi
+    const currentTheme = localStorage.getItem("theme");
+    if (currentTheme === "light") {
+      document.body.classList.add("light-theme");
+    }
+
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("light-theme");
+      const newTheme = document.body.classList.contains("light-theme") ? "light" : "dark";
+      localStorage.setItem("theme", newTheme);
+    });
+
+    // Müzik otomatik başlat (tarayıcı iznine bağlı)
     window.addEventListener('load', () => {
       bgMusic.play().catch(() => {
-        console.log("Tarayıcı otomatik çalmayı engelledi. Kullanıcı etkileşimi gerekebilir.");
+        console.log("Tarayıcı otomatik çalmayı engelledi.");
       });
     });
   </script>
