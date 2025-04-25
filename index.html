@@ -87,36 +87,6 @@
       gap: 10px;
     }
 
-    input[type=range] {
-      width: 150px;
-      -webkit-appearance: none;
-      appearance: none;
-      background: var(--accent-color);
-      height: 10px;
-      border-radius: 5px;
-      outline: none;
-      transition: all 0.3s ease;
-    }
-
-    input[type=range]:hover {
-      background: var(--neon-color);
-    }
-
-    input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      background: var(--neon-color);
-      cursor: pointer;
-    }
-
-    input[type=range]::-webkit-slider-runnable-track {
-      height: 10px;
-      border-radius: 5px;
-    }
-
     .about-box {
       position: absolute;
       top: 15vh;
@@ -158,22 +128,6 @@
       cursor: pointer;
       border-radius: 5px;
       font-weight: bold;
-    }
-
-    #musicToggle {
-      background-color: var(--neon-color);
-      color: var(--text-color);
-      border: none;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 5px;
-      font-weight: bold;
-      text-shadow: 0 0 5px var(--neon-color), 0 0 10px var(--neon-color);
-    }
-
-    #musicToggle:hover {
-      background-color: #ff66ff;
     }
 
     @media (max-width: 768px) {
@@ -218,15 +172,6 @@
     <a class="social-link" href="https://www.youtube.com" target="_blank">
       <img src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/youtube.svg" alt="YouTube">YouTube
     </a>
-
-    <!-- Müzik Aç/Kapat Butonu -->
-    <button id="musicToggle">Müziği Durdur</button>
-
-    <!-- Ses Kontrol -->
-    <div class="button-group">
-      <label for="volumeSlider">Ses Seviyesi</label>
-      <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
-    </div>
   </div>
 
   <!-- Hakkımda -->
@@ -246,25 +191,14 @@
     </iframe>
   </div>
 
-  <!-- Arka Plan Müziği -->
-  <audio id="bg-music" src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Harris_Heller/StreamBeats_-_Lofi/StreamBeats_-_Lofi_-_10_Late_Night_Vibes.mp3" loop autoplay></audio>
-
   <script>
-    const volumeSlider = document.getElementById('volumeSlider');
-    const musicToggle = document.getElementById('musicToggle');
-    const bgMusic = document.getElementById('bg-music');
     const themeToggle = document.getElementById('themeToggle');
 
-    let isPlaying = true;
-    bgMusic.volume = parseFloat(volumeSlider.value);
-
-    volumeSlider.addEventListener('input', () => {
-      bgMusic.volume = parseFloat(volumeSlider.value);
+    // Tema Değiştirme Fonksiyonu
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('light-theme');
+      themeToggle.textContent = document.body.classList.contains('light-theme') ? 'Karanlık Tema' : 'Aydınlık Tema';
     });
-
-    musicToggle.addEventListener('click', () => {
-      if (isPlaying) {
-        bgMusic.pause();
-        musicToggle.textContent = "Müziği Aç";
-      } else {
-        bgMusic
+  </script>
+</body>
+</html>
