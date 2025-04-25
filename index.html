@@ -11,10 +11,7 @@
       font-family: 'Segoe UI', sans-serif;
       background-color: black;
       color: white;
-      background-image: url('https://www.wallpaperflare.com/de-dust2-counter-strike-counter-strike-global-offensive-wallpaper-tflh');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      transition: all 0.5s ease; /* Gece-Gündüz geçişini yumuşatmak için */
     }
 
     /* Gece-Gündüz Teması */
@@ -35,17 +32,6 @@
     .theme-switcher:hover {
       background-color: #ff00ff;
       color: black;
-    }
-
-    /* Neon Pembe ve Hareketli Arka Plan */
-    @keyframes glowing {
-      0% { background-color: #000; }
-      50% { background-color: #1a1a1a; }
-      100% { background-color: #000; }
-    }
-
-    body {
-      animation: glowing 2s infinite alternate;
     }
 
     /* Sosyal Medya Bağlantıları */
@@ -166,11 +152,11 @@
     function toggleTheme() {
       const currentTheme = document.body.style.backgroundColor;
       if (currentTheme === 'black') {
-        document.body.style.backgroundColor = '#fff';  // Gündüz Teması
-        document.body.style.color = '#000';  // Gündüz Teması Yazı Rengi
+        document.body.style.backgroundColor = 'white';  // Gündüz Teması
+        document.body.style.color = 'black';  // Gündüz Teması Yazı Rengi
       } else {
         document.body.style.backgroundColor = 'black';  // Gece Teması
-        document.body.style.color = '#fff';  // Gece Teması Yazı Rengi
+        document.body.style.color = 'white';  // Gece Teması Yazı Rengi
       }
     }
   </script>
