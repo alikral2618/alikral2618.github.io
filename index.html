@@ -55,24 +55,7 @@
     }
 
     .button-group {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
       margin-top: 20px;
-    }
-
-    .music-button, .volume-button {
-      background-color: #ff00ff;
-      border: none;
-      color: white;
-      padding: 8px 16px;
-      font-size: 14px;
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-
-    .music-button:hover, .volume-button:hover {
-      transform: scale(1.1);
     }
 
     input[type=range] {
@@ -123,11 +106,6 @@
         margin-top: 30px;
       }
 
-      .button-group {
-        flex-direction: column;
-        align-items: center;
-      }
-
       .neon-text {
         font-size: 24px;
       }
@@ -148,9 +126,7 @@
     <a class="social-link" href="https://www.youtube.com" target="_blank">YouTube</a>
 
     <div class="button-group">
-      <button class="music-button" id="musicButton">Müzik Aç/Kapat</button>
-      <button class="volume-button" id="volumeDown">Sesi Azalt</button>
-      <button class="volume-button" id="volumeUp">Sesi Arttır</button>
+      <label for="volumeSlider">Ses Seviyesi</label><br>
       <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
     </div>
   </div>
@@ -170,40 +146,26 @@
     </iframe>
   </div>
 
-  <audio id="bg-music" src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Harris_Heller/StreamBeats_-_Lofi/StreamBeats_-_Lofi_-_13_Thinking_Of_You.mp3" loop hidden></audio>
+  <!-- Arka Plan Müziği -->
+  <audio id="bg-music" src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Harris_Heller/StreamBeats_-_Lofi/StreamBeats_-_Lofi_-_01_Tokyo_Cafe.mp3" loop autoplay></audio>
 
   <script>
-    const musicButton = document.getElementById('musicButton');
-    const volumeDown = document.getElementById('volumeDown');
-    const volumeUp = document.getElementById('volumeUp');
     const volumeSlider = document.getElementById('volumeSlider');
     const bgMusic = document.getElementById('bg-music');
-    let isPlaying = false;
 
-    musicButton.addEventListener('click', () => {
-      if (!isPlaying) {
-        bgMusic.play();
-        musicButton.textContent = 'Müziği Durdur';
-      } else {
-        bgMusic.pause();
-        bgMusic.currentTime = 0;
-        musicButton.textContent = 'Müzik Aç/Kapat';
-      }
-      isPlaying = !isPlaying;
-    });
+    // Otomatik başlatma için ses başlangıç seviyesini ayarla
+    bgMusic.volume = parseFloat(volumeSlider.value);
 
-    volumeDown.addEventListener('click', () => {
-      bgMusic.volume = Math.max(0, bgMusic.volume - 0.1);
-      volumeSlider.value = bgMusic.volume.toFixed(2);
-    });
-
-    volumeUp.addEventListener('click', () => {
-      bgMusic.volume = Math.min(1, bgMusic.volume + 0.1);
-      volumeSlider.value = bgMusic.volume.toFixed(2);
-    });
-
+    // Slider ile sesi kontrol et
     volumeSlider.addEventListener('input', () => {
       bgMusic.volume = parseFloat(volumeSlider.value);
+    });
+
+    // Otomatik çalmaya çalış (bazı tarayıcılar engelleyebilir)
+    window.addEventListener('load', () => {
+      bgMusic.play().catch(() => {
+        console.log("Tarayıcı otomatik çalmayı engelledi. Kullanıcı etkileşimi gerekebilir.");
+      });
     });
   </script>
 
