@@ -1,3 +1,20 @@
+İçeriğe geç
+Şunu dedin:
+merhaba
+ChatGPT:
+Merhaba! Nasılsın? 😊
+
+Şunu dedin:
+iyiyim sen
+ChatGPT:
+Ben de çok iyiyim, teşekkür ederim! Bugün sana nasıl yardımcı olabilirim? 😊
+
+Şunu dedin:
+bana yardım eder misin sana bir kod atsam
+ChatGPT:
+Tabii ki, memnuniyetle yardım ederim! Kodu gönder, birlikte bakalım. 😊
+
+Şunu dedin:
 <!DOCTYPE html>
 <html lang="tr">
 <head>
@@ -166,3 +183,241 @@ belli bir kitleye ulaşmak istiyorum ama her zaman hobi olarak yapacağim beni d
 
 </body>
 </html>
+ChatGPT:
+Harika bir sayfa olmuş! Tasarımda güzel neon efektleri var, sosyal medya bağlantıları da yerli yerinde. Yardım etmekten memnuniyet duyarım. Tam olarak neyle ilgili yardım istiyorsun? Görsel, işlevsel ya da kodla ilgili belirli bir sorun var mı?
+
+Şunu dedin:
+senden isteğim bu sayfanın arka planını komple değiştirir misin herhangi bir şey ekler misin
+ChatGPT:
+Elbette! Sana sayfanın havasını bozmadan ama daha etkileyici bir hale getirecek güzel bir arka plan önerisiyle yardımcı olayım.
+
+💡 Önerim: Dinamik ve modern bir his için animasyonlu bir galaksi arka planı veya yıldızlı gece efekti kullanabiliriz. Bu, Twitch/Youtube kitlesine hitap eden bir tasarım stilidir ve sayfana ayrı bir hava katar.
+
+İşte arka planı değiştiren ve yıldızlı hareketli bir efekt ekleyen versiyon:
+
+🔧 Yapman gereken: CSS kısmına aşağıdaki kodu eklemek ve <body>'ye bir class="stars" eklemek.
+🔁 CSS’e ekle (mevcut <style> içine):
+
+body.stars {
+  background: #000 url('https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/assets/images/stars.jpg') repeat top center;
+  background-size: cover;
+  animation: moveBackground 100s linear infinite;
+}
+
+@keyframes moveBackground {
+  from { background-position: 0 0; }
+  to { background-position: 10000px 0; }
+}
+🧱 HTML’de <body> kısmını şu şekilde değiştir:
+
+<body class="stars">
+İstersen bu efekti daha da ileri taşıyıp particles.js gibi bir kütüphane de entegre edebiliriz ama şimdilik sade ve etkileyici bir arka plan olarak bu harika çalışır.
+
+Bunu mu istersin, yoksa başka bir tarz (örneğin neon grid, matrix kod yağmuru, animasyonlu video arka plan vs.) mı düşünüyorsun?
+
+Şunu dedin:
+kodu tamamen yazıp atar mısın bana
+ChatGPT:
+Tabii! İşte arka planı yıldızlı bir görselle değiştirip yavaşça kayan bir galaksi efekti eklenmiş tam HTML sayfan. Kodun çalışması için ekstra bir şey yapmana gerek yok — sadece kopyala ve çalıştır. 👇
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ali Mert - Sosyal Sayfa</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      transition: all 0.5s ease;
+    }
+
+    /* Yıldızlı Arka Plan */
+    body.stars {
+      background: #000 url('https://cdn.jsdelivr.net/gh/VincentGarreau/particles.js/assets/images/stars.jpg') repeat top center;
+      background-size: cover;
+      animation: moveBackground 100s linear infinite;
+    }
+
+    @keyframes moveBackground {
+      from { background-position: 0 0; }
+      to { background-position: 10000px 0; }
+    }
+
+    .theme-switcher {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: transparent;
+      border: 2px solid #ff00ff;
+      padding: 10px;
+      color: #ff00ff;
+      font-size: 18px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .theme-switcher:hover {
+      background-color: #ff00ff;
+      color: black;
+    }
+
+    .container {
+      position: absolute;
+      top: 10%;
+      left: 2%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .neon-text {
+      font-size: 36px;
+      font-weight: bold;
+      color: white;
+      transition: all 0.3s ease;
+    }
+
+    .neon-text:hover {
+      color: #ff00ff;
+      text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
+      animation: blink 1s infinite alternate;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      100% { opacity: 0.5; }
+    }
+
+    .social-link {
+      color: white;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: bold;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .social-link:hover {
+      color: #ff00ff;
+      transform: scale(1.05);
+    }
+
+    .about-box {
+      position: absolute;
+      top: 15%;
+      right: 2%;
+      width: 20%;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border: 1px solid #ff00ff;
+      border-radius: 10px;
+      color: #fff;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .video-wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 640px;
+      max-width: 90%;
+      height: 360px;
+      box-shadow: 0 0 30px #ff00ff;
+      border: 3px solid #ff00ff;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    #bg-music {
+      display: none;
+    }
+  </style>
+</head>
+<body class="stars">
+
+  <!-- Gece/Gündüz Teması Butonu -->
+  <button class="theme-switcher" onclick="toggleTheme()">Gece/Gündüz Teması</button>
+
+  <!-- Sol Taraf -->
+  <div class="container">
+    <div class="neon-text">Sosyal Medya Bağlantılarım</div>
+    <a class="social-link" href="https://www.instagram.com/alimertkkarakaya?igsh=ZDUwYnFocTNla3pv" target="_blank">Instagram</a>
+    <a class="social-link" href="https://steamcommunity.com/id/BrownFast/" target="_blank">Steam</a>
+    <a class="social-link" href="https://www.twitch.tv/brownfast" target="_blank">Twitch</a>
+    <a class="social-link" href="https://youtube.com/@j3yerrortr" target="_blank">YouTube</a>
+  </div>
+
+  <!-- Hakkımda -->
+  <div class="about-box">
+    <strong>Hakkımda</strong><br><br>
+    Merhaba arkadaşlar ben Ali Mert, Twitch'te yayınlara başladım. Bundan öncesinde
+    Youtubede videolar çekiyordum hobi olarak gördüğüm için pek bir beklentim yoktu şimdi ise
+    belli bir kitleye ulaşmak istiyorum ama her zaman hobi olarak yapacağım. Beni desteklerseniz
+    çok sevinirim.
+  </div>
+
+  <!-- Ortadaki Klip -->
+  <div class="video-wrapper">
+    <iframe width="115%" height="115%"
+      src="https://www.youtube.com/embed/0MlnxInasEQ"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+  <!-- Arka Plan Müziği -->
+  <audio id="bg-music" src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" autoplay loop></audio>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      if (body.style.backgroundColor === 'white') {
+        body.classList.add('stars');
+        body.style.backgroundColor = '';
+        body.style.color = 'white';
+      } else {
+        body.classList.remove('stars');
+        body.style.backgroundColor = 'white';
+        body.style.color = 'black';
+      }
+    }
+  </script>
+
+</body>
+</html>
+💡 Bu sayfada:
+
+Yıldızlı kayan bir arka plan var.
+
+Tema butonuna basınca "gündüz modu"na geçiyor (beyaz zemin).
+
+Tüm eski işlevler korunuyor.
+
+İstersen daha çılgın bir efekt (örneğin matrix kod yağmuru ya da video arka plan gibi) de ekleyebilirim. Devam etmek ister misin?
+
+
+Daha zeki yanıtlar alabilir, dosya ve görsel yükleyebilir ve daha fazlasını yapabilirsin.
+
+Oturum aç
+
+Ücretsiz kaydol
+
+
+Ekle
+
+Ara
+
+Akıl Yürüt
+
+Ses
+ChatGPT hata yapabilir. Önemli bilgileri kontrol edin.
+?
