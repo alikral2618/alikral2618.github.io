@@ -12,7 +12,6 @@
       overflow: hidden;
     }
 
-    /* Sol Taraf */
     .container {
       position: absolute;
       top: 10cm;
@@ -56,6 +55,7 @@
 
     .button-group {
       display: flex;
+      flex-direction: column;
       gap: 10px;
       margin-top: 20px;
     }
@@ -74,7 +74,11 @@
       transform: scale(1.1);
     }
 
-    /* Hakkımda (Sağ Taraf) */
+    input[type=range] {
+      width: 150px;
+      margin-top: 10px;
+    }
+
     .about-box {
       position: absolute;
       top: 10cm;
@@ -90,10 +94,9 @@
       text-align: center;
     }
 
-    /* Ortadaki Klip */
     .video-wrapper {
       position: absolute;
-      top: 50%;
+      top: 47%; /* 3 cm yukarı alındı */
       left: 50%;
       transform: translate(-50%, -50%);
       width: 640px;
@@ -108,7 +111,6 @@
 </head>
 <body>
 
-  <!-- Sol Taraf -->
   <div class="container">
     <div class="neon-text">Sosyal Medya Bağlantıları</div>
 
@@ -119,17 +121,17 @@
 
     <div class="button-group">
       <button class="music-button" id="musicButton">Müzik Aç/Kapat</button>
-      <button class="volume-button" id="volumeButton">Sesi Azalt</button>
+      <button class="volume-button" id="volumeDown">Sesi Azalt</button>
+      <button class="volume-button" id="volumeUp">Sesi Arttır</button>
+      <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
     </div>
   </div>
 
-  <!-- Sağ Taraf -->
   <div class="about-box">
     <strong>Hakkımda</strong><br><br>
     Merhaba ben Ali Mert, Twitch'te yayınlara başladım.
   </div>
 
-  <!-- Ortadaki Klip -->
   <div class="video-wrapper">
     <iframe width="115%" height="115%"
       src="https://www.youtube.com/embed/0MlnxInasEQ"
@@ -141,10 +143,42 @@
   </div>
 
   <!-- Arka Plan Müziği -->
-  <audio id="bg-music" src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" loop hidden></audio>
+  <audio id="bg-music" src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/ccCommunity/Harris_Heller/StreamBeats_-_Lofi/StreamBeats_-_Lofi_-_13_Thinking_Of_You.mp3" loop hidden></audio>
 
   <script>
     const musicButton = document.getElementById('musicButton');
-    const volumeButton = document.getElementById('volumeButton');
+    const volumeDown = document.getElementById('volumeDown');
+    const volumeUp = document.getElementById('volumeUp');
+    const volumeSlider = document.getElementById('volumeSlider');
     const bgMusic = document.getElementById('bg-music');
-    let isPlaying
+    let isPlaying = false;
+
+    musicButton.addEventListener('click', () => {
+      if (!isPlaying) {
+        bgMusic.play();
+        musicButton.textContent = 'Müziği Durdur';
+      } else {
+        bgMusic.pause();
+        bgMusic.currentTime = 0;
+        musicButton.textContent = 'Müzik Aç/Kapat';
+      }
+      isPlaying = !isPlaying;
+    });
+
+    volumeDown.addEventListener('click', () => {
+      bgMusic.volume = Math.max(0, bgMusic.volume - 0.1);
+      volumeSlider.value = bgMusic.volume.toFixed(2);
+    });
+
+    volumeUp.addEventListener('click', () => {
+      bgMusic.volume = Math.min(1, bgMusic.volume + 0.1);
+      volumeSlider.value = bgMusic.volume.toFixed(2);
+    });
+
+    volumeSlider.addEventListener('input', () => {
+      bgMusic.volume = parseFloat(volumeSlider.value);
+    });
+  </script>
+
+</body>
+</html>
