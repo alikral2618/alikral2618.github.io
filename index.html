@@ -56,25 +56,28 @@
     .social-link {
       font-size: 24px;
       font-weight: bold;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+      display: block;
+      margin: 10px 0;
       color: white; /* Neon pembe renk yazılardan kaldırıldı */
-      transition: transform 0.3s ease;
+      text-decoration: none;
+      transition: transform 0.3s ease, color 0.3s ease;
     }
 
     .social-link:hover {
       transform: scale(1.05);
+      animation: neon 1.5s infinite alternate; /* Neon efekt eklenmiş */
     }
 
-    .social-link img {
-      width: 30px;
-      height: 30px;
-    }
-
-    /* Neon Pembe Renkli Logolar */
-    .social-link img {
-      filter: brightness(2) saturate(1.5) hue-rotate(315deg); /* Neon pembe efekti */
+    @keyframes neon {
+      0% {
+        color: #ff00ff;
+      }
+      50% {
+        color: #ff66ff;
+      }
+      100% {
+        color: #ff00ff;
+      }
     }
 
     .button-group {
@@ -158,23 +161,11 @@
   <div class="container">
     <div class="neon-text">Sosyal Medya Bağlantıları</div>
 
-    <!-- Sosyal Medya Bağlantıları ve Logoları -->
-    <a class="social-link" href="https://www.instagram.com" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
-      Instagram
-    </a>
-    <a class="social-link" href="https://store.steampowered.com/" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Steam_logo.png" alt="Steam Logo">
-      Steam
-    </a>
-    <a class="social-link" href="https://www.twitch.tv" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/Twitch_logo_2019.svg" alt="Twitch Logo">
-      Twitch
-    </a>
-    <a class="social-link" href="https://www.youtube.com" target="_blank">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube Logo">
-      YouTube
-    </a>
+    <!-- Sosyal Medya Bağlantıları (Yalnızca Yazılar) -->
+    <a class="social-link" href="https://www.instagram.com" target="_blank">Instagram</a>
+    <a class="social-link" href="https://store.steampowered.com/" target="_blank">Steam</a>
+    <a class="social-link" href="https://www.twitch.tv" target="_blank">Twitch</a>
+    <a class="social-link" href="https://www.youtube.com" target="_blank">YouTube</a>
 
     <div class="button-group">
       <button class="music-button" id="musicButton">Müzik Aç/Kapat</button>
@@ -184,11 +175,7 @@
   <!-- Sağ Taraf -->
   <div class="about-box">
     <strong>Hakkımda</strong><br><br>
-    Merhaba arkadaşlar ben Ali Mert, Bir ara youtubda video çekip sıkılıp
-    twitchde yayınlara başladım. izlenmek için değil ünlü olmak için değil
-    sadece anı kalmasını istediğim için burdayım beni sevip takip ederseniz
-    gerçekten çok mutlu olurum. bu işi hobi olarak yapsamda benimde ufak
-    tefek hedeflerim var umarım sizlerle gerçekleştiririz.
+    Merhaba ben Ali Mert, Twitch'te yayınlara başladım.
   </div>
 
   <!-- Ortadaki Klip -->
