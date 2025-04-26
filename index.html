@@ -12,43 +12,9 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      transition: all 0.5s ease;
-    }
-
-    body.dark-theme {
       background-color: black;
       color: white;
-    }
-
-    body.light-theme {
-      background-color: white;
-      color: black;
-    }
-
-    #preloader {
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      background: black;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 9999;
-    }
-
-    .loader {
-      border: 6px solid #ff00ff33;
-      border-top: 6px solid #ff00ff;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      animation: spin 1s linear infinite;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      transition: all 0.5s ease;
     }
 
     .top-controls {
@@ -56,9 +22,9 @@
       top: 20px;
       right: 20px;
       display: flex;
+      flex-direction: column;
       gap: 10px;
       z-index: 100;
-      flex-wrap: wrap;
     }
 
     .top-controls button {
@@ -77,7 +43,12 @@
     .top-controls button:hover {
       background-color: #ff00ff;
       color: white;
-      box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+    }
+
+    .date-time-box {
+      color: #ff00ff;
+      font-size: 14px;
+      text-align: center;
     }
 
     .container {
@@ -106,11 +77,6 @@
       box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
     }
 
-    .social-link.instagram { background-color: #E4405F; }
-    .social-link.steam { background-color: #1B2838; }
-    .social-link.twitch { background-color: #6441A5; }
-    .social-link.youtube { background-color: #FF0000; }
-
     .about-box {
       position: absolute;
       top: 15%;
@@ -120,7 +86,12 @@
       padding: 15px;
       border: 1px solid #ff00ff;
       border-radius: 10px;
-      z-index: 10;
+    }
+
+    .about-time {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #ff00ff;
     }
 
     .neon-text {
@@ -128,19 +99,19 @@
       font-size: 24px;
       font-weight: bold;
       text-transform: uppercase;
-      text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
+      text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff;
       animation: neon 1.5s ease-in-out infinite alternate;
     }
 
     @keyframes neon {
       0% {
-        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
+        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff;
       }
       50% {
-        text-shadow: 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+        text-shadow: 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
       }
       100% {
-        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
+        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff;
       }
     }
 
@@ -186,142 +157,55 @@
       height: 500px;
       border: none;
     }
-
-    /* Tarih ve Saat Stil */
-    #date-time {
-      color: #ff00ff;
-      font-size: 16px;
-      font-weight: bold;
-      margin-top: 10px;
-      text-align: center;
-    }
-
-    /* RGB Şerit (Hareketli) */
-    .rgb-stripe {
-      width: 100%;
-      height: 5px;
-      background: linear-gradient(to right, red, yellow, green, cyan, blue, magenta);
-      background-size: 400% 400%;
-      animation: moveRGB 3s linear infinite;
-    }
-
-    @keyframes moveRGB {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
-    }
-
-    /* Hakkımda Altındaki Çizgi */
-    .about-box-line {
-      width: 55%; /* %45 daraltıldı */
-      height: 2px;
-      background-color: #ff00ff;
-      margin-top: 15cm; /* 15cm aşağı kaydırıldı */
-    }
-
   </style>
 </head>
-<body class="dark-theme">
-
-  <div id="preloader">
-    <div class="loader"></div>
-    <div style="color: white; margin-top: 10px;">Yükleniyor...</div>
-  </div>
+<body>
 
   <div class="top-controls">
     <button onclick="toggleTheme()">Gece/Gündüz</button>
-    <div id="date-time"></div>
-  </div>
-
-  <div id="video-container">
-    <iframe src="https://www.youtube.com/embed/0MlnxInasEQ?autoplay=1&controls=1&showinfo=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    <div class="date-time-box" id="date-time"></div>
   </div>
 
   <div class="container">
     <div class="neon-text">Sosyal Medya Bağlantılarım</div>
-    <a class="social-link instagram" href="https://www.instagram.com/alimertkkarakaya">Instagram</a>
-    <a class="social-link steam" href="https://steamcommunity.com/id/BrownFast/">Steam</a>
-    <a class="social-link twitch" href="https://www.twitch.tv/brownfast">Twitch</a>
-    <a class="social-link youtube" href="https://youtube.com/@j3yerrortr">YouTube</a>
+    <a class="social-link" href="https://www.instagram.com/alimertkkarakaya">Instagram</a>
+    <a class="social-link" href="https://steamcommunity.com/id/BrownFast/">Steam</a>
+    <a class="social-link" href="https://www.twitch.tv/brownfast">Twitch</a>
+    <a class="social-link" href="https://youtube.com/@j3yerrortr">YouTube</a>
   </div>
 
   <div class="about-box">
     <strong>Hakkımda</strong><br><br>
-    Merhaba! Ben Ali Mert. Twitch'te yayın yapıyor, YouTube'da içerik üretiyorum. Beni takip edip destek olursanız çok sevinirim hobi olarak başladığım bu işte sizin sayenizde ufakda olsa bir ses getirmek istiyorum şimdiden teşekkür ederim <3
+    Merhaba! Ben Ali Mert. Twitch'te yayın yapıyor, YouTube'da içerik üretiyorum. Beni takip edip destek olursanız çok sevinirim hobi olarak başladığım bu işte sizin sayenizde ufak da olsa bir ses getirmek istiyorum şimdiden teşekkür ederim <3
+    <div class="about-time" id="about-clock"></div>
   </div>
-
-  <!-- Hakkımda Altındaki Çizgi -->
-  <div class="about-box-line"></div>
-
-  <!-- RGB Hareketli Şerit Hakkımda kısmının altına -->
-  <div class="rgb-stripe"></div>
 
   <div id="mouse-follower"></div>
 
   <script>
-    window.addEventListener('load', () => {
-      setTimeout(() => {
-        document.getElementById("preloader").style.display = "none";
-      }, 1000);
-    });
-
-    const hour = new Date().getHours();
-    let message = "Hoş geldin!";
-    if (hour >= 6 && hour < 12) message = "Günaydın!";
-    else if (hour >= 12 && hour < 18) message = "İyi günler!";
-    else if (hour >= 18 && hour < 24) message = "İyi akşamlar!";
-    else message = "İyi geceler!";
-    document.getElementById("greeting").textContent = message + " Ali Mert'in sayfasına hoş geldin.";
-
     function toggleTheme() {
       document.body.classList.toggle('dark-theme');
       document.body.classList.toggle('light-theme');
     }
-
-    // Tarih, Saat, Gün ve Ay hesaplama
-    function updateDateTime() {
-      const now = new Date();
-      const days = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
-      const months = ["Ocak", "Şubat", "Mart", "Nisan", "Mayıs", "Haziran", "Temmuz", "Ağustos", "Eylül", "Ekim", "Kasım", "Aralık"];
-      const day = days[now.getDay()];
-      const month = months[now.getMonth()];
-      const date = now.getDate();
-      const year = now.getFullYear();
-      const hours = now.getHours().toString().padStart(2, "0");
-      const minutes = now.getMinutes().toString().padStart(2, "0");
-      const seconds = now.getSeconds().toString().padStart(2, "0");
-
-      const dateTime = `${day}, ${date} ${month} ${year} | ${hours}:${minutes}:${seconds}`;
-      document.getElementById('date-time').textContent = dateTime;
-    }
-
-    // Güncel saati her saniye güncelle
-    function updateCurrentTime() {
-      const now = new Date();
-      const hours = now.getHours().toString().padStart(2, "0");
-      const minutes = now.getMinutes().toString().padStart(2, "0");
-      const seconds = now.getSeconds().toString().padStart(2, "0");
-
-      const currentTime = `${hours}:${minutes}:${seconds}`;
-      document.getElementById('current-time').textContent = `Güncel Saat: ${currentTime}`;
-    }
-
-    setInterval(updateDateTime, 1000);
-    setInterval(updateCurrentTime, 1000);
-    updateDateTime();
-    updateCurrentTime();
 
     document.addEventListener('mousemove', (event) => {
       const mouseFollower = document.getElementById('mouse-follower');
       mouseFollower.style.left = `${event.clientX - 6}px`;
       mouseFollower.style.top = `${event.clientY - 6}px`;
     });
+
+    function updateDateTime() {
+      const now = new Date();
+      const day = now.toLocaleDateString('tr-TR', { weekday: 'long' });
+      const date = now.toLocaleDateString('tr-TR');
+      const time = now.toLocaleTimeString('tr-TR');
+      document.getElementById('date-time').textContent = `${day}, ${date} - ${time}`;
+      document.getElementById('about-clock').textContent = `Saat: ${time}`;
+    }
+
+    setInterval(updateDateTime, 1000);
+    updateDateTime();
   </script>
+
 </body>
 </html>
