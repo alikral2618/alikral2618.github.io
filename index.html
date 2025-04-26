@@ -159,10 +159,11 @@
       }
     }
 
-    // Sayfaya ilk tıklamada müziği başlat
+    // Sayfaya ilk tıklamada müziği başlat ve sesi %5'e ayarla
     window.addEventListener('click', function () {
       const music = document.getElementById("bg-music");
       music.muted = false;
+      music.volume = 0.05; // %5 ses seviyesi
       music.play();
     }, { once: true });
   </script>
