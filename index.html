@@ -209,15 +209,15 @@
 
     <select id="music-select">
       <option value="">Müzik Seç</option>
-      <!-- NCS Telifsiz Şarkılar -->
-      <option value="https://www.youtube.com/watch?v=ShHgVKFzOq4">NCS - It’s My Life</option>
-      <option value="https://www.youtube.com/watch?v=AOiE_RKCCoM">NCS - Spectre</option>
-      <option value="https://www.youtube.com/watch?v=wPN3M9e7lH8">NCS - Invincible</option>
-      <option value="https://www.youtube.com/watch?v=bM7SZ5SBt8U">NCS - Fade</option>
-      <option value="https://www.youtube.com/watch?v=QkHkxgVmFXk">NCS - Sky High</option>
-      <option value="https://www.youtube.com/watch?v=n8X9_MgEdCg">NCS - Thunder</option>
-      <option value="https://www.youtube.com/watch?v=R7KpCqjW3Mc">NCS - Summer</option>
-      <option value="https://www.youtube.com/watch?v=Jt2kEcsxGjc">NCS - Diamond Eyes</option>
+      <!-- NCS Telifsiz Şarkılar (YouTube Video Embed Linkleri) -->
+      <option value="https://www.youtube.com/embed/ShHgVKFzOq4?autoplay=1&mute=1">NCS - It’s My Life</option>
+      <option value="https://www.youtube.com/embed/AOiE_RKCCoM?autoplay=1&mute=1">NCS - Spectre</option>
+      <option value="https://www.youtube.com/embed/wPN3M9e7lH8?autoplay=1&mute=1">NCS - Invincible</option>
+      <option value="https://www.youtube.com/embed/bM7SZ5SBt8U?autoplay=1&mute=1">NCS - Fade</option>
+      <option value="https://www.youtube.com/embed/QkHkxgVmFXk?autoplay=1&mute=1">NCS - Sky High</option>
+      <option value="https://www.youtube.com/embed/n8X9_MgEdCg?autoplay=1&mute=1">NCS - Thunder</option>
+      <option value="https://www.youtube.com/embed/R7KpCqjW3Mc?autoplay=1&mute=1">NCS - Summer</option>
+      <option value="https://www.youtube.com/embed/Jt2kEcsxGjc?autoplay=1&mute=1">NCS - Diamond Eyes</option>
     </select>
 
     <button onclick="startMusic()">Müziği Başlat</button>
@@ -225,7 +225,7 @@
     <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.2" onchange="adjustVolume()" title="Ses Seviyesi">
   </div>
 
-  <audio id="bg-music" loop></audio>
+  <div id="music-container"></div>
 
   <div id="video-container">
     <iframe src="https://www.youtube.com/embed/0MlnxInasEQ?autoplay=1&controls=1&showinfo=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -269,21 +269,15 @@
     }
 
     function startMusic() {
-      const music = document.getElementById("bg-music");
-      const source = document.getElementById("music-select").value;
-      const volume = parseFloat(document.getElementById("volume-slider").value);
-      if (source) {
-        music.src = source;
-        music.volume = volume;
-        music.play();
-      } else {
-        alert("Lütfen önce bir müzik seçin.");
-      }
-    }
+      const musicFrame = document.createElement('iframe');
+      musicFrame.style.width = "100%";
+      musicFrame.style.height = "300px"; // YouTube video boyutlarını ayarladık
+      musicFrame.style.border = "none";
+      musicFrame.src = document.getElementById("music-select").value;
 
-    function adjustVolume() {
-      const music = document.getElementById("bg-music");
-      music.volume = parseFloat(document.getElementById("volume-slider").value);
+      const musicContainer = document.getElementById("music-container");
+      musicContainer.innerHTML = ''; // Önceki müzik çalarları temizleyelim
+      musicContainer.appendChild(musicFrame);
     }
 
     function updateClock() {
