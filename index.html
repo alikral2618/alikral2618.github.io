@@ -8,30 +8,36 @@
     * {
       box-sizing: border-box;
     }
+
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       transition: all 0.5s ease;
     }
+
     body.dark-theme {
       background-color: black;
       color: white;
     }
+
     body.light-theme {
       background-color: white;
       color: black;
     }
 
+    /* Yükleme ekranı */
     #preloader {
       position: fixed;
       width: 100%;
       height: 100%;
       background: black;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       z-index: 9999;
     }
+
     .loader {
       border: 6px solid #ff00ff33;
       border-top: 6px solid #ff00ff;
@@ -40,14 +46,10 @@
       height: 50px;
       animation: spin 1s linear infinite;
     }
+
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
-    }
-
-    .theme-switcher, #music-select, #volume-slider, #start-music {
-      position: relative;
-      z-index: 100;
     }
 
     .greeting {
@@ -58,6 +60,20 @@
       color: #ff00ff;
     }
 
+    .top-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+      flex-wrap: wrap;
+    }
+
+    .top-controls input[type=range] {
+      width: 100px;
+    }
+
     .container {
       position: absolute;
       top: 15%;
@@ -66,11 +82,13 @@
       flex-direction: column;
       gap: 10px;
     }
+
     .social-link {
       color: white;
       text-decoration: none;
       font-size: 20px;
     }
+
     .social-link:hover {
       color: #ff00ff;
     }
@@ -96,6 +114,7 @@
       flex-wrap: wrap;
       justify-content: center;
     }
+
     .gallery img {
       width: 120px;
       border: 2px solid #ff00ff;
@@ -110,39 +129,38 @@
       padding: 15px;
       border-radius: 10px;
     }
-
-    .top-controls {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      display: flex;
-      gap: 10px;
-      z-index: 100;
-      flex-wrap: wrap;
-    }
-    .top-controls input[type=range] {
-      width: 100px;
-    }
   </style>
 </head>
 <body class="dark-theme">
-  <div id="preloader"><div class="loader"></div></div>
 
+  <!-- Yükleme ekranı -->
+  <div id="preloader">
+    <div class="loader"></div>
+    <div style="color: white; margin-top: 10px;">Yükleniyor...</div>
+  </div>
+
+  <!-- Selamlama -->
   <div class="greeting" id="greeting"></div>
 
+  <!-- Kontroller -->
   <div class="top-controls">
-    <button class="theme-switcher" onclick="toggleTheme()">Gece/Gündüz</button>
+    <button onclick="toggleTheme()">Gece/Gündüz</button>
+
     <select id="music-select">
       <option value="">Müzik Seç</option>
       <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Egzod__Maestro_Chives__Neoni/Rise_Up_feat_Neoni/Egzod__Maestro_Chives__Neoni_-_Rise_Up_feat_Neoni.mp3">Rise Up</option>
       <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Ketsa/Ascendance/Ketsa_-_Ascendance.mp3">Ascendance</option>
     </select>
-    <button id="start-music" onclick="startMusic()">Müziği Başlat</button>
+
+    <button onclick="startMusic()">Müziği Başlat</button>
+
     <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.2" onchange="adjustVolume()" title="Ses Seviyesi">
   </div>
 
+  <!-- Müzik -->
   <audio id="bg-music" loop></audio>
 
+  <!-- Sosyal medya -->
   <div class="container">
     <div class="neon-text">Sosyal Medya</div>
     <a class="social-link" href="https://www.instagram.com/alimertkkarakaya">Instagram</a>
@@ -151,43 +169,54 @@
     <a class="social-link" href="https://youtube.com/@j3yerrortr">YouTube</a>
   </div>
 
+  <!-- Hakkımda kutusu -->
   <div class="about-box">
     <strong>Hakkımda</strong><br><br>
     Merhaba! Ben Ali Mert. Twitch'te yayın yapıyor, YouTube'da içerik üretiyorum.
   </div>
 
+  <!-- Galeri -->
   <div class="gallery">
     <img src="https://i.imgur.com/Cv1bZL6.jpg" alt="Galeri 1">
     <img src="https://i.imgur.com/4AiXzf8.jpeg" alt="Galeri 2">
     <img src="https://i.imgur.com/OYVxP3T.jpeg" alt="Galeri 3">
   </div>
 
+  <!-- Geri bildirim -->
   <div class="feedback-box">
     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSffGp2CzzUOjXnRvkYwJxgN9ZtZGcWJrD4eVYwnYYyMJ8JzIg/viewform?embedded=true" width="300" height="300" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
   </div>
 
+  <!-- Sayaç -->
   <div style="position:fixed; bottom:5px; left:50%; transform:translateX(-50%); font-size:14px; color:#ff00ff;">
     <img src="https://hitwebcounter.com/counter/counter.php?page=9123456&style=0006&nbdigits=5&type=ip&initCount=0" title="Ziyaretçi Sayacı" alt="Ziyaretçi" border="0" />
   </div>
 
+  <!-- JS -->
   <script>
+    // Sayfa yüklendiğinde preloader 1 saniyede kaybolsun
     window.addEventListener('load', () => {
-      document.getElementById("preloader").style.display = "none";
+      setTimeout(() => {
+        document.getElementById("preloader").style.display = "none";
+      }, 1000);
     });
 
+    // Selamlama
     const hour = new Date().getHours();
     let message = "Hoş geldin!";
     if (hour >= 6 && hour < 12) message = "Günaydın!";
     else if (hour >= 12 && hour < 18) message = "İyi günler!";
     else if (hour >= 18 && hour < 24) message = "İyi akşamlar!";
     else message = "İyi geceler!";
-    document.getElementById("greeting").textContent = message + " Ali Mert'in sayfasına hoş geldin.";
+    document.getElementById("greeting").textContent = message + " Sayfama Hoş Geldin.";
 
+    // Tema değiştir
     function toggleTheme() {
       document.body.classList.toggle('dark-theme');
       document.body.classList.toggle('light-theme');
     }
 
+    // Müziği başlat
     function startMusic() {
       const music = document.getElementById("bg-music");
       const source = document.getElementById("music-select").value;
@@ -201,10 +230,12 @@
       }
     }
 
+    // Ses ayarla
     function adjustVolume() {
       const music = document.getElementById("bg-music");
       music.volume = parseFloat(document.getElementById("volume-slider").value);
     }
   </script>
+
 </body>
 </html>
