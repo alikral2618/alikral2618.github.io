@@ -209,15 +209,15 @@
 
     <select id="music-select">
       <option value="">Müzik Seç</option>
-      <!-- NCS Telifsiz Şarkılar (YouTube Video Embed Linkleri) -->
-      <option value="https://www.youtube.com/embed/ShHgVKFzOq4?autoplay=1&mute=1">NCS - It’s My Life</option>
-      <option value="https://www.youtube.com/embed/AOiE_RKCCoM?autoplay=1&mute=1">NCS - Spectre</option>
-      <option value="https://www.youtube.com/embed/wPN3M9e7lH8?autoplay=1&mute=1">NCS - Invincible</option>
-      <option value="https://www.youtube.com/embed/bM7SZ5SBt8U?autoplay=1&mute=1">NCS - Fade</option>
-      <option value="https://www.youtube.com/embed/QkHkxgVmFXk?autoplay=1&mute=1">NCS - Sky High</option>
-      <option value="https://www.youtube.com/embed/n8X9_MgEdCg?autoplay=1&mute=1">NCS - Thunder</option>
-      <option value="https://www.youtube.com/embed/R7KpCqjW3Mc?autoplay=1&mute=1">NCS - Summer</option>
-      <option value="https://www.youtube.com/embed/Jt2kEcsxGjc?autoplay=1&mute=1">NCS - Diamond Eyes</option>
+      <!-- NCS Telifsiz Şarkılar -->
+      <option value="assets/music/ItsMyLife.mp3">NCS - It’s My Life</option>
+      <option value="assets/music/Spectre.mp3">NCS - Spectre</option>
+      <option value="assets/music/Invincible.mp3">NCS - Invincible</option>
+      <option value="assets/music/Fade.mp3">NCS - Fade</option>
+      <option value="assets/music/SkyHigh.mp3">NCS - Sky High</option>
+      <option value="assets/music/Thunder.mp3">NCS - Thunder</option>
+      <option value="assets/music/Summer.mp3">NCS - Summer</option>
+      <option value="assets/music/DiamondEyes.mp3">NCS - Diamond Eyes</option>
     </select>
 
     <button onclick="startMusic()">Müziği Başlat</button>
@@ -269,15 +269,19 @@
     }
 
     function startMusic() {
-      const musicFrame = document.createElement('iframe');
-      musicFrame.style.width = "100%";
-      musicFrame.style.height = "300px"; // YouTube video boyutlarını ayarladık
-      musicFrame.style.border = "none";
-      musicFrame.src = document.getElementById("music-select").value;
+      const musicSource = document.getElementById("music-select").value;
+      const audio = new Audio(musicSource);
+      audio.loop = true;
+      audio.play();
 
       const musicContainer = document.getElementById("music-container");
-      musicContainer.innerHTML = ''; // Önceki müzik çalarları temizleyelim
-      musicContainer.appendChild(musicFrame);
+      musicContainer.innerHTML = ''; // Önceki müzikleri temizle
+      const audioElement = document.createElement('audio');
+      audioElement.src = musicSource;
+      audioElement.controls = true;
+      audioElement.autoplay = true;
+      audioElement.loop = true;
+      musicContainer.appendChild(audioElement);
     }
 
     function updateClock() {
@@ -287,7 +291,7 @@
       const seconds = now.getSeconds().toString().padStart(2, '0');
       document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
     }
-    
+
     setInterval(updateClock, 1000);
     updateClock();
 
