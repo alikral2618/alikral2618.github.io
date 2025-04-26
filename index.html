@@ -120,6 +120,7 @@
       padding: 15px;
       border: 1px solid #ff00ff;
       border-radius: 10px;
+      z-index: 10;
     }
 
     .neon-text {
@@ -195,22 +196,27 @@
       text-align: center;
     }
 
-    /* Güncel Saat */
-    #current-time {
-      color: #ff00ff;
-      font-size: 18px;
-      font-weight: bold;
-      margin-top: 10px;
-      text-align: center;
-    }
-
-    /* RGB Şerit */
+    /* RGB Şerit (Hareketli) */
     .rgb-stripe {
       width: 100%;
       height: 5px;
       background: linear-gradient(to right, red, yellow, green, cyan, blue, magenta);
-      margin-top: 10px;
+      background-size: 400% 400%;
+      animation: moveRGB 3s linear infinite;
     }
+
+    @keyframes moveRGB {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
   </style>
 </head>
 <body class="dark-theme">
@@ -242,11 +248,8 @@
     Merhaba! Ben Ali Mert. Twitch'te yayın yapıyor, YouTube'da içerik üretiyorum. Beni takip edip destek olursanız çok sevinirim hobi olarak başladığım bu işte sizin sayenizde ufakda olsa bir ses getirmek istiyorum şimdiden teşekkür ederim <3
   </div>
 
-  <!-- RGB Şerit Hakkımda kısmının altında -->
+  <!-- RGB Hareketli Şerit Hakkımda kısmının altına -->
   <div class="rgb-stripe"></div>
-
-  <!-- Güncel Saat Burada Gösterilecek -->
-  <div id="current-time"></div>
 
   <div id="mouse-follower"></div>
 
