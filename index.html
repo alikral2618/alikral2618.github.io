@@ -13,6 +13,7 @@
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       transition: all 0.5s ease;
+      overflow: hidden; /* Sayfa taşmasını engelle */
     }
 
     body.dark-theme {
@@ -61,7 +62,6 @@
       flex-wrap: wrap;
     }
 
-    /* Neon pembe butonlar */
     .top-controls button {
       background-color: transparent;
       border: 2px solid #ff00ff;
@@ -86,7 +86,7 @@
 
     .container {
       position: absolute;
-      top: 20%; /* 2 cm aşağıya kaydırdım */
+      top: 20%;
       left: 2%;
       display: flex;
       flex-direction: column;
@@ -94,10 +94,9 @@
       text-align: center;
     }
 
-    /* Sosyal medya bağlantıları için stil */
     .social-link {
       color: #ff00ff;
-      font-size: 18px; /* Küçültülmüş font boyutu */
+      font-size: 18px;
       font-weight: bold;
       text-decoration: none;
       display: inline-block;
@@ -115,7 +114,6 @@
       transform: scale(1.1);
     }
 
-    /* Sosyal medya başlığının neon pembe ve yanıp sönme efekti */
     .neon-text {
       color: #ff00ff;
       font-size: 24px;
@@ -124,7 +122,6 @@
       text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
     }
 
-    /* Yanıp sönme efekti sadece fare imleci üzerine geldiğinde */
     .neon-text:hover {
       animation: neon 1.5s ease-in-out infinite alternate;
     }
@@ -141,7 +138,6 @@
       }
     }
 
-    /* Video için stil */
     .video-container {
       position: absolute;
       top: 50%;
@@ -157,17 +153,39 @@
       border: none;
     }
 
-    /* Hakkımda kısmı için stil */
     .about-box {
       position: fixed;
       top: 20%;
       right: 2%;
-      width: 240px; /* %13 genişletilmiş kutu */
+      width: 270px;
       background-color: rgba(255, 255, 255, 0.1);
       padding: 10px;
       border: 1px solid #ff00ff;
       border-radius: 10px;
       color: white;
+    }
+
+    /* Fare izi için ışık halkası efekti */
+    .mouse-follower {
+      position: absolute;
+      pointer-events: none;
+      width: 20px;
+      height: 20px;
+      background-color: #ff00ff;
+      border-radius: 50%;
+      opacity: 0.7;
+      transition: transform 0.1s ease;
+      animation: pulse 1s infinite alternate;
+    }
+
+    /* Fare hareketiyle puls efekti */
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+      100% {
+        transform: scale(1.5);
+      }
     }
 
   </style>
@@ -219,6 +237,9 @@ getirmek istiyorum şimdiden teşekkür ederim <3
     <iframe src="https://www.youtube.com/embed/0MlnxInasEQ?autohide=1&showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </div>
 
+  <!-- Fare İzleyici -->
+  <div class="mouse-follower" id="mouse-follower"></div>
+
   <script>
     window.addEventListener('load', () => {
       setTimeout(() => {
@@ -248,6 +269,13 @@ getirmek istiyorum şimdiden teşekkür ederim <3
       const music = document.getElementById("bg-music");
       music.volume = parseFloat(document.getElementById("volume-slider").value);
     }
+
+    // Fare hareketini izleyen işlev
+    document.addEventListener('mousemove', (event) => {
+      const mouseFollower = document.getElementById('mouse-follower');
+      mouseFollower.style.left = `${event.clientX - 10}px`;
+      mouseFollower.style.top = `${event.clientY - 10}px`;
+    });
   </script>
 
 </body>
