@@ -2,9 +2,36 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ali Mert - Sosyal Sayfa</title>
   <style>
+    /* Yükleniyor ekranı */
+    #preloader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+
+    .loader {
+      border: 6px solid #ff00ff33;
+      border-top: 6px solid #ff00ff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Sayfa stil başlangıcı */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -33,217 +60,111 @@
       font-size: 18px;
       cursor: pointer;
       font-weight: bold;
-      transition: background-color 0.3s, color 0.3s;
     }
 
-    .theme-switcher:hover {
-      background-color: #ff00ff;
-      color: black;
-    }
-
-    .container {
+    /* Selamlama mesajı */
+    .greeting {
       position: absolute;
-      top: 10%;
-      left: 2%;
-      display: flex;
-      flex-direction: column;
-      gap: 20px;
-      align-items: flex-start;
-    }
-
-    .neon-text {
-      font-size: 36px;
+      top: 20px;
+      left: 20px;
+      font-size: 22px;
       font-weight: bold;
-      transition: all 0.3s ease;
-    }
-
-    .dark-theme .neon-text {
-      color: white;
-    }
-
-    .light-theme .neon-text {
-      color: black;
-    }
-
-    .neon-text:hover {
       color: #ff00ff;
-      text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 40px #ff00ff;
-      animation: blink 1s infinite alternate;
     }
 
-    @keyframes blink {
-      0% { opacity: 1; }
-      100% { opacity: 0.5; }
-    }
-
-    .social-link {
-      text-decoration: none;
-      font-size: 24px;
-      font-weight: bold;
-      transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .dark-theme .social-link {
-      color: white;
-    }
-
-    .light-theme .social-link {
-      color: black;
-    }
-
-    .social-link:hover {
-      color: #ff00ff;
-      transform: scale(1.05);
-    }
-
-    .about-box {
-      position: absolute;
-      top: 15%;
-      right: 2%;
-      width: 20%;
-      padding: 20px;
-      border: 1px solid #ff00ff;
-      border-radius: 10px;
-      font-size: 18px;
-      text-align: center;
-      background-color: rgba(255, 255, 255, 0.05);
-    }
-
-    .dark-theme .about-box {
-      color: white;
-    }
-
-    .light-theme .about-box {
-      color: black;
-      background-color: rgba(0, 0, 0, 0.05);
-    }
-
-    .video-wrapper {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 640px;
-      max-width: 90%;
-      height: 360px;
-      box-shadow: 0 0 30px #ff00ff;
-      border: 3px solid #ff00ff;
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    #bg-music {
-      display: none;
-    }
-
-    #music-button {
+    /* Müzik seçici */
+    #music-select {
       position: absolute;
       bottom: 20px;
       left: 20px;
-      background-color: #ff00ff;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 10px;
+      padding: 10px;
       font-size: 16px;
-      box-shadow: 0 0 10px #ff00ff;
+      border-radius: 10px;
+      border: 2px solid #ff00ff;
+      background: black;
+      color: white;
     }
 
-    #music-button:hover {
-      background-color: white;
-      color: #ff00ff;
-    }
-
-    /* Mobil Uyumluluk */
+    /* Mobil uyum */
     @media (max-width: 768px) {
-      .container {
-        top: 5%;
-        left: 5%;
-        gap: 15px;
-      }
-
-      .about-box {
+      .theme-switcher, #music-select {
         position: static;
-        width: 90%;
-        margin: 20px auto;
-      }
-
-      .video-wrapper {
-        position: static;
-        transform: none;
-        margin: 20px auto;
-        width: 100%;
-        height: auto;
-        aspect-ratio: 16/9;
-      }
-
-      .theme-switcher, #music-button {
-        position: static;
-        display: block;
         margin: 10px auto;
+        display: block;
+      }
+
+      .greeting {
+        position: static;
+        text-align: center;
+        margin-top: 10px;
       }
     }
   </style>
 </head>
 <body class="dark-theme">
 
-  <!-- Tema Butonu -->
+  <!-- Yükleniyor -->
+  <div id="preloader">
+    <div class="loader"></div>
+  </div>
+
+  <!-- Selam mesajı -->
+  <div class="greeting" id="greeting"></div>
+
+  <!-- Tema butonu -->
   <button class="theme-switcher" onclick="toggleTheme()">Gece/Gündüz Teması</button>
 
-  <!-- Sol -->
-  <div class="container">
-    <div class="neon-text">Sosyal Medya Bağlantılarım</div>
-    <a class="social-link" href="https://www.instagram.com/alimertkkarakaya?igsh=ZDUwYnFocTNla3pv" target="_blank">Instagram</a>
-    <a class="social-link" href="https://steamcommunity.com/id/BrownFast/" target="_blank">Steam</a>
-    <a class="social-link" href="https://www.twitch.tv/brownfast" target="_blank">Twitch</a>
-    <a class="social-link" href="https://youtube.com/@j3yerrortr" target="_blank">YouTube</a>
-  </div>
+  <!-- Müzik seçici -->
+  <select id="music-select" onchange="changeMusic()">
+    <option value="">🎵 Müzik Seç</option>
+    <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Egzod__Maestro_Chives__Neoni/Rise_Up_feat_Neoni/Egzod__Maestro_Chives__Neoni_-_Rise_Up_feat_Neoni.mp3">Rise Up</option>
+    <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Ketsa/Ascendance/Ketsa_-_Ascendance.mp3">Ascendance</option>
+    <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Komiku/Komiku_-_The_Adventure_Continues/Komiku_-_The_Adventure_Continues.mp3">Adventure</option>
+  </select>
 
-  <!-- Hakkımda -->
-  <div class="about-box">
-    <strong>Hakkımda</strong><br><br>
-    Merhaba arkadaşlar ben Ali Mert, Twitch'te yayınlara başladım. Bundan öncesinde
-    Youtube'da videolar çekiyordum, hobi olarak gördüğüm için pek bir beklentim yoktu. Şimdi ise
-    belli bir kitleye ulaşmak istiyorum ama her zaman hobi olarak yapacağım. Beni desteklerseniz
-    çok sevinirim.
-  </div>
-
-  <!-- Video -->
-  <div class="video-wrapper">
-    <iframe width="100%" height="100%"
-      src="https://www.youtube.com/embed/0MlnxInasEQ"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-  <!-- Müzik Başlat -->
-  <button id="music-button" onclick="startMusic()">▶ Müziği Başlat</button>
-
-  <!-- Arka Plan Müziği -->
-  <audio id="bg-music" loop>
-    <source src="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Egzod__Maestro_Chives__Neoni/Rise_Up_feat_Neoni/Egzod__Maestro_Chives__Neoni_-_Rise_Up_feat_Neoni.mp3" type="audio/mpeg">
-    Tarayıcınız ses etiketini desteklemiyor.
-  </audio>
+  <!-- Müzik çalar -->
+  <audio id="bg-music" autoplay loop></audio>
 
   <script>
+    // Yükleniyor animasyonu
+    window.addEventListener('load', () => {
+      document.getElementById("preloader").style.display = "none";
+    });
+
+    // Selam mesajı
+    const greetingText = document.getElementById("greeting");
+    const hour = new Date().getHours();
+    let message = "Hoş geldin!";
+
+    if (hour >= 6 && hour < 12) {
+      message = "Günaydın!";
+    } else if (hour >= 12 && hour < 18) {
+      message = "İyi günler!";
+    } else if (hour >= 18 && hour < 24) {
+      message = "İyi akşamlar!";
+    } else {
+      message = "İyi geceler!";
+    }
+
+    greetingText.textContent = message + " Ali Mert'in sayfasına hoş geldin.";
+
+    // Tema değiştirici
     function toggleTheme() {
       const body = document.body;
       body.classList.toggle('dark-theme');
       body.classList.toggle('light-theme');
     }
 
-    function startMusic() {
-      const music = document.getElementById("bg-music");
-      music.volume = 0.15;
-      music.play();
-      document.getElementById("music-button").style.display = "none";
+    // Müzik seçici
+    function changeMusic() {
+      const player = document.getElementById("bg-music");
+      const selected = document.getElementById("music-select").value;
+      if (selected) {
+        player.src = selected;
+        player.volume = 0.2;
+        player.play();
+      }
     }
   </script>
-
 </body>
 </html>
