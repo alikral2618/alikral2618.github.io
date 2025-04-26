@@ -89,6 +89,7 @@
       gap: 10px;
     }
 
+    /* Sosyal medya bağlantılarının butonlarının yazılarını özelleştirme */
     .social-link {
       display: inline-block;
       color: white;
@@ -105,6 +106,12 @@
       transform: scale(1.1);
       box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
     }
+
+    /* Her bir sosyal medya bağlantısının yazısını özelleştirme */
+    .social-link.instagram { background-color: #E4405F; }
+    .social-link.steam { background-color: #1B2838; }
+    .social-link.twitch { background-color: #6441A5; }
+    .social-link.youtube { background-color: #FF0000; }
 
     .about-box {
       position: absolute;
@@ -164,28 +171,11 @@
       }
     }
 
-    /* Video Styling */
-    #video-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 59%;
-      max-width: 900px;
-      z-index: 1;
-    }
-
-    iframe {
-      width: 100%;
-      height: 500px;
-      border: none;
-    }
-
     /* Saat Stili */
     .clock {
       position: fixed;
       bottom: 10px;
-      left: 10px;
+      right: 10px;
       font-size: 14px;
       color: #ff00ff;
       font-weight: bold;
@@ -213,10 +203,10 @@
 
   <div class="container">
     <div class="neon-text">Sosyal Medya Bağlantılarım</div>
-    <a class="social-link" href="https://www.instagram.com/alimertkkarakaya">Instagram</a>
-    <a class="social-link" href="https://steamcommunity.com/id/BrownFast/">Steam</a>
-    <a class="social-link" href="https://www.twitch.tv/brownfast">Twitch</a>
-    <a class="social-link" href="https://youtube.com/@j3yerrortr">YouTube</a>
+    <a class="social-link instagram" href="https://www.instagram.com/alimertkkarakaya">Instagram</a>
+    <a class="social-link steam" href="https://steamcommunity.com/id/BrownFast/">Steam</a>
+    <a class="social-link twitch" href="https://www.twitch.tv/brownfast">Twitch</a>
+    <a class="social-link youtube" href="https://youtube.com/@j3yerrortr">YouTube</a>
   </div>
 
   <div class="about-box">
@@ -255,7 +245,7 @@
       const seconds = now.getSeconds().toString().padStart(2, '0');
       document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
     }
-
+    
     setInterval(updateClock, 1000);
     updateClock();
 
