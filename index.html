@@ -103,22 +103,28 @@
       border-radius: 10px;
     }
 
-    /* Klip için stil */
-    .video-container {
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      height: 60%;
-      z-index: 1;
+    /* Sosyal medya başlığının neon pembe ve yanıp sönme efekti */
+    .neon-text {
+      color: #ff00ff;
+      font-size: 24px;
+      font-weight: bold;
+      text-transform: uppercase;
+      text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
+      animation: neon 1.5s ease-in-out infinite alternate;
     }
 
-    .video-container video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+    @keyframes neon {
+      0% {
+        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
+      }
+      50% {
+        text-shadow: 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff00ff;
+      }
+      100% {
+        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
+      }
     }
+
   </style>
 </head>
 <body class="dark-theme">
@@ -146,16 +152,8 @@
 
   <audio id="bg-music" loop></audio>
 
-  <!-- Video Klip -->
-  <div class="video-container">
-    <video id="my-video" autoplay muted loop>
-      <source src="https://www.youtube.com/watch?v=0MlnxInasEQ" type="video/mp4">
-      Tarayıcınız video oynatmayı desteklemiyor.
-    </video>
-  </div>
-
   <div class="container">
-    <div class="neon-text">Sosyal Medya</div>
+    <div class="neon-text">Sosyal Medya Bağlantılarım</div>
     <a class="social-link" href="https://www.instagram.com/alimertkkarakaya">Instagram</a>
     <a class="social-link" href="https://steamcommunity.com/id/BrownFast/">Steam</a>
     <a class="social-link" href="https://www.twitch.tv/brownfast">Twitch</a>
@@ -164,11 +162,9 @@
 
   <div class="about-box">
     <strong>Hakkımda</strong><br><br>
-    Merhaba! Ben Ali Mert. Twitch'te yayın yapıyor, YouTube'da içerik üretiyorum.
-  </div>
-
-  <div style="position:fixed; bottom:5px; left:50%; transform:translateX(-50%); font-size:14px; color:#ff00ff;">
-    <img src="https://hitwebcounter.com/counter/counter.php?page=9123456&style=0006&nbdigits=5&type=ip&initCount=0" title="Ziyaretçi Sayacı" alt="Ziyaretçi" border="0" />
+    Merhaba! Ben Ali Mert. Twitch'te yayın yapıyor, YouTube'da içerik üretiyorum. Beni takip edip
+destek olursanız çok sevinirim hobi olarak başladığım bu işte sizin sayenizde ufakda olsa bir ses
+getirmek istiyorum şimdiden teşekkür ederim <3
   </div>
 
   <script>
