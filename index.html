@@ -3,208 +3,126 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ali Mert - Sosyal Sayfa</title>
+  <title>Ali Mert - Sosyal Profil</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    /* Genel stil ayarları */
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: black;
-      color: white;
-      transition: all 0.5s ease;
-    }
-
-    .top-controls {
-      position: fixed;
-      top: 20px;
-      right: 20px;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #333;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      z-index: 100;
-    }
-
-    .top-controls button {
-      background-color: transparent;
-      border: 2px solid #ff00ff;
-      color: #ff00ff;
-      font-size: 16px;
-      padding: 10px 20px;
-      cursor: pointer;
-      text-transform: uppercase;
-      font-weight: bold;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-
-    .top-controls button:hover {
-      background-color: #ff00ff;
-      color: white;
-    }
-
-    .date-time-box {
-      color: #ff00ff;
-      font-size: 14px;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
       text-align: center;
     }
-
-    .container {
-      position: absolute;
-      top: 15%;
-      left: 2%;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    .social-link {
-      display: inline-block;
+    header {
+      background-color: #333;
       color: white;
-      text-decoration: none;
-      font-size: 18px;
-      padding: 10px 20px;
-      background-color: #ff00ff;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-
-    .social-link:hover {
-      background-color: #ff77ff;
-      transform: scale(1.1);
-      box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
-    }
-
-    .about-box {
+      padding: 20px;
+      width: 100%;
       position: absolute;
-      top: 15%;
-      right: 2%;
-      width: 22%;
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 15px;
-      border: 1px solid #ff00ff;
+      top: 0;
+      left: 0;
+      text-align: center;
+    }
+    .profile-container {
+      display: flex;
+      justify-content: center;
+      margin: 20px;
+      flex-direction: column;
+      align-items: center;
+    }
+    .profile-info {
+      background-color: white;
+      padding: 20px;
       border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      text-align: center;
     }
-
-    .about-time {
-      margin-top: 10px;
-      font-size: 14px;
-      color: #ff00ff;
-    }
-
-    .neon-text {
-      color: #ff00ff;
-      font-size: 24px;
-      font-weight: bold;
-      text-transform: uppercase;
-      text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff;
-      animation: neon 1.5s ease-in-out infinite alternate;
-    }
-
-    @keyframes neon {
-      0% {
-        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff;
-      }
-      50% {
-        text-shadow: 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
-      }
-      100% {
-        text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff;
-      }
-    }
-
-    #mouse-follower {
-      position: absolute;
-      width: 12px;
-      height: 12px;
+    .profile-info img {
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
-      background-color: #ff00ff;
-      pointer-events: none;
-      box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
-      animation: sparkle 1.5s infinite alternate;
     }
-
-    @keyframes sparkle {
-      0% {
-        transform: scale(0.8);
-        opacity: 0.8;
-      }
-      50% {
-        transform: scale(1.2);
-        opacity: 1;
-      }
-      100% {
-        transform: scale(0.8);
-        opacity: 0.8;
-      }
+    .social-links {
+      margin-top: 20px;
     }
-
-    /* Video Styling */
-    #video-container {
+    .social-links a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: #333;
+      font-size: 20px;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+    /* Video stil ayarları */
+    .video-container {
       position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 59%;
-      max-width: 900px;
-      z-index: 1;
+      width: 80%;
+      max-width: 800px;
     }
-
-    iframe {
+    video {
       width: 100%;
-      height: 500px;
-      border: none;
+      height: auto;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
 
-  <div class="top-controls">
-    <button onclick="toggleTheme()">Gece/Gündüz</button>
-    <div class="date-time-box" id="date-time"></div>
+  <header>
+    <h1>Ali Mert'in Sosyal Profil Sayfası</h1>
+  </header>
+
+  <div class="video-container">
+    <video controls>
+      <source src="https://www.youtube.com/watch?v=ZHumjSDbxUQ" type="video/mp4">
+      Tarayıcınız video etiketini desteklemiyor.
+    </video>
   </div>
 
-  <div class="container">
-    <div class="neon-text">Sosyal Medya Bağlantılarım</div>
-    <a class="social-link" href="https://www.instagram.com/alimertkkarakaya">Instagram</a>
-    <a class="social-link" href="https://steamcommunity.com/id/BrownFast/">Steam</a>
-    <a class="social-link" href="https://www.twitch.tv/brownfast">Twitch</a>
-    <a class="social-link" href="https://youtube.com/@j3yerrortr">YouTube</a>
+  <div class="profile-container">
+    <div class="profile-info">
+      <img src="https://via.placeholder.com/100" alt="Ali Mert">
+      <h2>Ali Mert</h2>
+      <p>Web geliştiricisi ve teknoloji meraklısı</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/alimertkkarakaya" target="_blank">Instagram</a>
+        <a href="https://steamcommunity.com/id/BrownFast/" target="_blank">Steam</a>
+        <a href="https://www.twitch.tv/brownfast" target="_blank">Twitch</a>
+        <a href="https://youtube.com/@j3yerrortr" target="_blank">YouTube</a>
+      </div>
+    </div>
   </div>
 
-  <div class="about-box">
-    <strong>Hakkımda</strong><br><br>
-    Merhaba! Ben Ali Mert. Twitch'te yayın yapıyor, YouTube'da içerik üretiyorum. Beni takip edip destek olursanız çok sevinirim hobi olarak başladığım bu işte sizin sayenizde ufak da olsa bir ses getirmek istiyorum şimdiden teşekkür ederim <3
-    <div class="about-time" id="about-clock"></div>
-  </div>
-
-  <div id="mouse-follower"></div>
+  <footer>
+    <p>Güncel saat: <span id="current-time"></span></p>
+  </footer>
 
   <script>
-    function toggleTheme() {
-      document.body.classList.toggle('dark-theme');
-      document.body.classList.toggle('light-theme');
-    }
-
-    document.addEventListener('mousemove', (event) => {
-      const mouseFollower = document.getElementById('mouse-follower');
-      mouseFollower.style.left = `${event.clientX - 6}px`;
-      mouseFollower.style.top = `${event.clientY - 6}px`;
-    });
-
-    function updateDateTime() {
+    function updateTime() {
       const now = new Date();
-      const day = now.toLocaleDateString('tr-TR', { weekday: 'long' });
-      const date = now.toLocaleDateString('tr-TR');
-      const time = now.toLocaleTimeString('tr-TR');
-      document.getElementById('date-time').textContent = `${day}, ${date} - ${time}`;
-      document.getElementById('about-clock').textContent = `Saat: ${time}`;
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      document.getElementById('current-time').textContent = `${hours}:${minutes}:${seconds}`;
     }
-
-    setInterval(updateDateTime, 1000);
-    updateDateTime();
+    setInterval(updateTime, 1000);
+    updateTime();
   </script>
 
 </body>
