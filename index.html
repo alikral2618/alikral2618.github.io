@@ -61,13 +61,32 @@
       flex-wrap: wrap;
     }
 
+    /* Neon pembe butonlar */
+    .top-controls button {
+      background-color: transparent;
+      border: 2px solid #ff00ff;
+      color: #ff00ff;
+      font-size: 16px;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .top-controls button:hover {
+      background-color: #ff00ff;
+      color: white;
+    }
+
     .top-controls input[type=range] {
       width: 100px;
     }
 
     .container {
       position: absolute;
-      top: 18%; /* 3 cm aşağıya kaydırdım */
+      top: 20%; /* 2 cm aşağıya kaydırdım */
       left: 2%;
       display: flex;
       flex-direction: column;
@@ -143,7 +162,7 @@
       position: fixed;
       top: 20%;
       right: 2%;
-      width: 206px; /* %3 genişletilmiş kutu */
+      width: 214px; /* %7 genişletilmiş kutu */
       background-color: rgba(255, 255, 255, 0.1);
       padding: 10px;
       border: 1px solid #ff00ff;
@@ -169,6 +188,8 @@
       <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">SoundHelix - Song 2</option>
       <option value="https://www.freemusicarchive.org/file/view/a639bcf8fba34d538e5f876dbca2e3c6.mp3">Egzod - Rise Up feat Neoni</option>
       <option value="https://www.freemusicarchive.org/file/view/0a1ffba42ec14b5793977a73ff004fe9.mp3">Ketsa - Ascendance</option>
+      <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">SoundHelix - Song 3</option>
+      <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">SoundHelix - Song 4</option>
     </select>
 
     <button onclick="startMusic()">Müziği Başlat</button>
