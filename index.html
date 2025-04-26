@@ -195,6 +195,14 @@
       text-align: center;
     }
 
+    /* Güncel Saat */
+    #current-time {
+      color: #ff00ff;
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+      text-align: center;
+    }
   </style>
 </head>
 <body class="dark-theme">
@@ -225,6 +233,9 @@
     <strong>Hakkımda</strong><br><br>
     Merhaba! Ben Ali Mert. Twitch'te yayın yapıyor, YouTube'da içerik üretiyorum. Beni takip edip destek olursanız çok sevinirim hobi olarak başladığım bu işte sizin sayenizde ufakda olsa bir ses getirmek istiyorum şimdiden teşekkür ederim <3
   </div>
+
+  <!-- Güncel Saat Burada Gösterilecek -->
+  <div id="current-time"></div>
 
   <div id="mouse-follower"></div>
 
@@ -265,8 +276,21 @@
       document.getElementById('date-time').textContent = dateTime;
     }
 
+    // Güncel saati her saniye güncelle
+    function updateCurrentTime() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, "0");
+      const minutes = now.getMinutes().toString().padStart(2, "0");
+      const seconds = now.getSeconds().toString().padStart(2, "0");
+
+      const currentTime = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('current-time').textContent = `Güncel Saat: ${currentTime}`;
+    }
+
     setInterval(updateDateTime, 1000);
+    setInterval(updateCurrentTime, 1000);
     updateDateTime();
+    updateCurrentTime();
 
     document.addEventListener('mousemove', (event) => {
       const mouseFollower = document.getElementById('mouse-follower');
