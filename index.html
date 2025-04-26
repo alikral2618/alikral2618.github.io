@@ -211,6 +211,10 @@
       <option value="">Müzik Seç</option>
       <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Egzod__Maestro_Chives__Neoni/Rise_Up_feat_Neoni/Egzod__Maestro_Chives__Neoni_-_Rise_Up_feat_Neoni.mp3">Rise Up</option>
       <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Ketsa/Ascendance/Ketsa_-_Ascendance.mp3">Ascendance</option>
+      <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Blue_Dots_Gang/Minimal_Tension/Blue_Dots_Gang_-_Minimal_Tension.mp3">Minimal Tension</option>
+      <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Parvus_Decree/Pathway/Parvus_Decree_-_Pathway.mp3">Pathway</option>
+      <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Silverman/Elastic_Sound/Elastic_Sound_-_Deceptive_Experiment.mp3">Deceptive Experiment</option>
+      <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Lee_Rosevere/Hard_Rain_Falling/Lee_Rosevere_-_Hard_Rain_Falling.mp3">Hard Rain Falling</option>
     </select>
 
     <button onclick="startMusic()">Müziği Başlat</button>
@@ -279,7 +283,6 @@
       music.volume = parseFloat(document.getElementById("volume-slider").value);
     }
 
-    // Saat güncelleme fonksiyonu
     function updateClock() {
       const now = new Date();
       const hours = now.getHours().toString().padStart(2, '0');
@@ -293,7 +296,7 @@
 
     document.addEventListener('mousemove', (event) => {
       const mouseFollower = document.getElementById('mouse-follower');
-      mouseFollower.style.left = `${event.clientX - 6}px`; // Küçültülmüş fare simgesi
+      mouseFollower.style.left = `${event.clientX - 6}px`;
       mouseFollower.style.top = `${event.clientY - 6}px`;
     });
   </script>
