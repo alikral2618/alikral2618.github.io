@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ali Mert - Sosyal Sayfa</title>
   <style>
-    /* === Genel Stil ve Temalar === */
     * {
       box-sizing: border-box;
     }
@@ -24,7 +23,6 @@
       color: black;
     }
 
-    /* === Yüklenme Animasyonu === */
     #preloader {
       position: fixed;
       width: 100%;
@@ -48,12 +46,12 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* === Temalar, Selam, Butonlar === */
     .theme-switcher, #music-select {
       position: fixed;
       top: 20px;
       right: 20px;
       z-index: 100;
+      margin-left: 10px;
     }
     .greeting {
       position: absolute;
@@ -63,7 +61,6 @@
       color: #ff00ff;
     }
 
-    /* === Sosyal Linkler ve Hakkımda === */
     .container {
       position: absolute;
       top: 15%;
@@ -91,7 +88,6 @@
       border-radius: 10px;
     }
 
-    /* === Galeri === */
     .gallery {
       position: absolute;
       bottom: 150px;
@@ -108,7 +104,6 @@
       border-radius: 10px;
     }
 
-    /* === QR Kod === */
     .qr-box {
       position: absolute;
       bottom: 80px;
@@ -118,7 +113,6 @@
       border-radius: 8px;
     }
 
-    /* === Geri Bildirim === */
     .feedback-box {
       position: absolute;
       bottom: 20px;
@@ -133,12 +127,14 @@
   <div id="preloader"><div class="loader"></div></div>
 
   <div class="greeting" id="greeting"></div>
-  <button class="theme-switcher" onclick="toggleTheme()">Gece/Gündüz</button>
-  <select id="music-select" onchange="changeMusic()">
-    <option value="">Müzik Seç</option>
-    <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Egzod__Maestro_Chives__Neoni/Rise_Up_feat_Neoni/Egzod__Maestro_Chives__Neoni_-_Rise_Up_feat_Neoni.mp3">Rise Up</option>
-    <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Ketsa/Ascendance/Ketsa_-_Ascendance.mp3">Ascendance</option>
-  </select>
+  <div style="position: fixed; top: 20px; right: 20px; display: flex; gap: 10px;">
+    <button class="theme-switcher" onclick="toggleTheme()">Gece/Gündüz</button>
+    <select id="music-select" onchange="changeMusic()">
+      <option value="">Müzik Seç</option>
+      <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Egzod__Maestro_Chives__Neoni/Rise_Up_feat_Neoni/Egzod__Maestro_Chives__Neoni_-_Rise_Up_feat_Neoni.mp3">Rise Up</option>
+      <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Ketsa/Ascendance/Ketsa_-_Ascendance.mp3">Ascendance</option>
+    </select>
+  </div>
 
   <audio id="bg-music" autoplay loop></audio>
 
@@ -156,9 +152,9 @@
   </div>
 
   <div class="gallery">
-    <img src="https://i.imgur.com/1.jpg" alt="1">
-    <img src="https://i.imgur.com/2.jpg" alt="2">
-    <img src="https://i.imgur.com/3.jpg" alt="3">
+    <img src="https://i.imgur.com/Cv1bZL6.jpg" alt="Galeri 1">
+    <img src="https://i.imgur.com/4AiXzf8.jpeg" alt="Galeri 2">
+    <img src="https://i.imgur.com/OYVxP3T.jpeg" alt="Galeri 3">
   </div>
 
   <div class="qr-box">
@@ -166,11 +162,11 @@
   </div>
 
   <div class="feedback-box">
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScDfeedbackformURL/viewform?embedded=true" width="300" height="300" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSffGp2CzzUOjXnRvkYwJxgN9ZtZGcWJrD4eVYwnYYyMJ8JzIg/viewform?embedded=true" width="300" height="300" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
   </div>
 
   <div style="position:fixed; bottom:5px; left:50%; transform:translateX(-50%); font-size:14px; color:#ff00ff;">
-    <img src="https://hitwebcounter.com/counter/counter.php?page=1234567&style=0006&nbdigits=5&type=ip&initCount=0" title="Ziyaretçi Sayacı" Alt="Ziyaretçi" border="0" />
+    <img src="https://hitwebcounter.com/counter/counter.php?page=9123456&style=0006&nbdigits=5&type=ip&initCount=0" title="Ziyaretçi Sayacı" alt="Ziyaretçi" border="0" />
   </div>
 
   <script>
