@@ -5,37 +5,176 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ali Mert - Sosyal Sayfa</title>
   <style>
-    /* ... (Mevcut CSS'ini aynen bırakıyoruz, buraya yeniden eklemedim) ... */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      transition: all 0.5s ease;
+    }
+    body.dark-theme {
+      background-color: black;
+      color: white;
+    }
+    body.light-theme {
+      background-color: white;
+      color: black;
+    }
+
+    #preloader {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+    }
+    .loader {
+      border: 6px solid #ff00ff33;
+      border-top: 6px solid #ff00ff;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .theme-switcher, #music-select, #volume-slider, #start-music {
+      position: relative;
+      z-index: 100;
+    }
+
+    .greeting {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 20px;
+      color: #ff00ff;
+    }
+
+    .container {
+      position: absolute;
+      top: 15%;
+      left: 2%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .social-link {
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+    }
+    .social-link:hover {
+      color: #ff00ff;
+    }
+
+    .about-box {
+      position: absolute;
+      top: 15%;
+      right: 2%;
+      width: 20%;
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border: 1px solid #ff00ff;
+      border-radius: 10px;
+    }
+
+    .gallery {
+      position: absolute;
+      bottom: 150px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .gallery img {
+      width: 120px;
+      border: 2px solid #ff00ff;
+      border-radius: 10px;
+    }
+
+    .feedback-box {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 10px;
+    }
+
+    .top-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+      z-index: 100;
+      flex-wrap: wrap;
+    }
+    .top-controls input[type=range] {
+      width: 100px;
+    }
   </style>
 </head>
 <body class="dark-theme">
   <div id="preloader"><div class="loader"></div></div>
 
   <div class="greeting" id="greeting"></div>
-  
-  <!-- Buton ve Select kutuları -->
-  <div style="position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 100;">
+
+  <div class="top-controls">
     <button class="theme-switcher" onclick="toggleTheme()">Gece/Gündüz</button>
     <select id="music-select">
       <option value="">Müzik Seç</option>
       <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Egzod__Maestro_Chives__Neoni/Rise_Up_feat_Neoni/Egzod__Maestro_Chives__Neoni_-_Rise_Up_feat_Neoni.mp3">Rise Up</option>
       <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Ketsa/Ascendance/Ketsa_-_Ascendance.mp3">Ascendance</option>
     </select>
-    <button onclick="startMusic()">Müziği Başlat</button>
+    <button id="start-music" onclick="startMusic()">Müziği Başlat</button>
+    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.2" onchange="adjustVolume()" title="Ses Seviyesi">
   </div>
 
   <audio id="bg-music" loop></audio>
 
-  <!-- Sosyal Medya, Hakkımda, Galeri, QR ve Feedback kutuları -->
-  <!-- ... (Senin mevcut içeriğin buraya aynı şekilde gelir) ... -->
+  <div class="container">
+    <div class="neon-text">Sosyal Medya</div>
+    <a class="social-link" href="https://www.instagram.com/alimertkkarakaya">Instagram</a>
+    <a class="social-link" href="https://steamcommunity.com/id/BrownFast/">Steam</a>
+    <a class="social-link" href="https://www.twitch.tv/brownfast">Twitch</a>
+    <a class="social-link" href="https://youtube.com/@j3yerrortr">YouTube</a>
+  </div>
+
+  <div class="about-box">
+    <strong>Hakkımda</strong><br><br>
+    Merhaba! Ben Ali Mert. Twitch'te yayın yapıyor, YouTube'da içerik üretiyorum.
+  </div>
+
+  <div class="gallery">
+    <img src="https://i.imgur.com/Cv1bZL6.jpg" alt="Galeri 1">
+    <img src="https://i.imgur.com/4AiXzf8.jpeg" alt="Galeri 2">
+    <img src="https://i.imgur.com/OYVxP3T.jpeg" alt="Galeri 3">
+  </div>
+
+  <div class="feedback-box">
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSffGp2CzzUOjXnRvkYwJxgN9ZtZGcWJrD4eVYwnYYyMJ8JzIg/viewform?embedded=true" width="300" height="300" frameborder="0" marginheight="0" marginwidth="0">Yükleniyor…</iframe>
+  </div>
+
+  <div style="position:fixed; bottom:5px; left:50%; transform:translateX(-50%); font-size:14px; color:#ff00ff;">
+    <img src="https://hitwebcounter.com/counter/counter.php?page=9123456&style=0006&nbdigits=5&type=ip&initCount=0" title="Ziyaretçi Sayacı" alt="Ziyaretçi" border="0" />
+  </div>
 
   <script>
-    // Sayfa yüklendiğinde preloader kaybolsun
     window.addEventListener('load', () => {
       document.getElementById("preloader").style.display = "none";
     });
 
-    // Saat bazlı selam
     const hour = new Date().getHours();
     let message = "Hoş geldin!";
     if (hour >= 6 && hour < 12) message = "Günaydın!";
@@ -44,23 +183,27 @@
     else message = "İyi geceler!";
     document.getElementById("greeting").textContent = message + " Ali Mert'in sayfasına hoş geldin.";
 
-    // Tema geçişi
     function toggleTheme() {
       document.body.classList.toggle('dark-theme');
       document.body.classList.toggle('light-theme');
     }
 
-    // Müziği başlat
     function startMusic() {
       const music = document.getElementById("bg-music");
       const source = document.getElementById("music-select").value;
+      const volume = parseFloat(document.getElementById("volume-slider").value);
       if (source) {
         music.src = source;
-        music.volume = 0.2;
+        music.volume = volume;
         music.play();
       } else {
         alert("Lütfen önce bir müzik seçin.");
       }
+    }
+
+    function adjustVolume() {
+      const music = document.getElementById("bg-music");
+      music.volume = parseFloat(document.getElementById("volume-slider").value);
     }
   </script>
 </body>
