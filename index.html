@@ -176,25 +176,6 @@
       font-weight: bold;
     }
 
-    /* Müzik Butonları */
-    .top-controls button, .top-controls select {
-      background-color: transparent;
-      border: 2px solid #8000ff; /* Neon mor */
-      color: #8000ff; /* Neon mor */
-      font-size: 16px;
-      padding: 10px 20px;
-      cursor: pointer;
-      text-transform: uppercase;
-      font-weight: bold;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-
-    .top-controls button:hover, .top-controls select:hover {
-      background-color: #8000ff;
-      color: white;
-    }
-
   </style>
 </head>
 <body class="dark-theme">
@@ -206,26 +187,7 @@
 
   <div class="top-controls">
     <button onclick="toggleTheme()">Gece/Gündüz</button>
-
-    <select id="music-select">
-      <option value="">Müzik Seç</option>
-      <!-- NCS Telifsiz Şarkılar -->
-      <option value="assets/music/ItsMyLife.mp3">NCS - It’s My Life</option>
-      <option value="assets/music/Spectre.mp3">NCS - Spectre</option>
-      <option value="assets/music/Invincible.mp3">NCS - Invincible</option>
-      <option value="assets/music/Fade.mp3">NCS - Fade</option>
-      <option value="assets/music/SkyHigh.mp3">NCS - Sky High</option>
-      <option value="assets/music/Thunder.mp3">NCS - Thunder</option>
-      <option value="assets/music/Summer.mp3">NCS - Summer</option>
-      <option value="assets/music/DiamondEyes.mp3">NCS - Diamond Eyes</option>
-    </select>
-
-    <button onclick="startMusic()">Müziği Başlat</button>
-
-    <input type="range" id="volume-slider" min="0" max="1" step="0.01" value="0.2" onchange="adjustVolume()" title="Ses Seviyesi">
   </div>
-
-  <div id="music-container"></div>
 
   <div id="video-container">
     <iframe src="https://www.youtube.com/embed/0MlnxInasEQ?autoplay=1&controls=1&showinfo=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -266,22 +228,6 @@
     function toggleTheme() {
       document.body.classList.toggle('dark-theme');
       document.body.classList.toggle('light-theme');
-    }
-
-    function startMusic() {
-      const musicSource = document.getElementById("music-select").value;
-      const audio = new Audio(musicSource);
-      audio.loop = true;
-      audio.play();
-
-      const musicContainer = document.getElementById("music-container");
-      musicContainer.innerHTML = ''; // Önceki müzikleri temizle
-      const audioElement = document.createElement('audio');
-      audioElement.src = musicSource;
-      audioElement.controls = true;
-      audioElement.autoplay = true;
-      audioElement.loop = true;
-      musicContainer.appendChild(audioElement);
     }
 
     function updateClock() {
