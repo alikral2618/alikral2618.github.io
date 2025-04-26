@@ -103,7 +103,6 @@
       border-radius: 10px;
     }
 
-    /* Sosyal medya başlığının neon pembe ve yanıp sönme efekti */
     .neon-text {
       color: #ff00ff;
       font-size: 24px;
@@ -125,7 +124,6 @@
       }
     }
 
-    /* Fare efektleri */
     #mouse-follower {
       position: absolute;
       width: 30px;
@@ -152,11 +150,10 @@
       }
     }
 
-    /* Normal buton stil */
     .top-controls button {
       background-color: transparent;
-      border: 2px solid #00ff00; /* Yeşil kenarlık */
-      color: #00ff00; /* Yeşil yazı rengi */
+      border: 2px solid #00ff00;
+      color: #00ff00;
       font-size: 16px;
       padding: 10px 20px;
       cursor: pointer;
@@ -171,11 +168,10 @@
       color: white;
     }
 
-    /* Müzik seç butonuna özel stil */
     .top-controls select {
       background-color: transparent;
-      border: 2px solid #00ff00; /* Yeşil kenarlık */
-      color: #00ff00; /* Yeşil yazı rengi */
+      border: 2px solid #00ff00;
+      color: #00ff00;
       padding: 10px 20px;
       font-size: 16px;
       border-radius: 5px;
@@ -188,6 +184,22 @@
       color: white;
     }
 
+    /* Video Styling */
+    #video-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 75%; /* Videonun genişliği %25 küçültüldü */
+      max-width: 900px;
+      z-index: 1;
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
   </style>
 </head>
 <body class="dark-theme">
@@ -214,6 +226,10 @@
   </div>
 
   <audio id="bg-music" loop></audio>
+
+  <div id="video-container">
+    <iframe src="https://www.youtube.com/embed/0MlnxInasEQ?autoplay=1&controls=1&showinfo=0&rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
 
   <div class="container">
     <div class="neon-text">Sosyal Medya Bağlantılarım</div>
