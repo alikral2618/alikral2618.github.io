@@ -13,7 +13,6 @@
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       transition: all 0.5s ease;
-      overflow: hidden; /* Sayfa taşmasını engelle */
     }
 
     body.dark-theme {
@@ -52,6 +51,14 @@
       100% { transform: rotate(360deg); }
     }
 
+    .greeting {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      font-size: 20px;
+      color: #ff00ff;
+    }
+
     .top-controls {
       position: fixed;
       top: 20px;
@@ -62,67 +69,47 @@
       flex-wrap: wrap;
     }
 
-    .top-controls button {
-      background-color: transparent;
-      border: 2px solid #ff00ff;
-      color: #ff00ff;
-      font-size: 16px;
-      padding: 10px 20px;
-      cursor: pointer;
-      text-transform: uppercase;
-      font-weight: bold;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-
-    .top-controls button:hover {
-      background-color: #ff00ff;
-      color: white;
-    }
-
     .top-controls input[type=range] {
       width: 100px;
     }
 
     .container {
       position: absolute;
-      top: 20%;
+      top: 15%;
       left: 2%;
       display: flex;
       flex-direction: column;
-      gap: 20px;
-      text-align: center;
+      gap: 10px;
     }
 
     .social-link {
-      color: #ff00ff;
-      font-size: 18px;
-      font-weight: bold;
+      color: white;
       text-decoration: none;
-      display: inline-block;
-      padding: 10px 20px;
-      margin: 5px 0;
-      border: 2px solid #ff00ff;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-      text-transform: uppercase;
+      font-size: 20px;
     }
 
     .social-link:hover {
-      color: white;
-      background-color: #ff00ff;
-      transform: scale(1.1);
+      color: #ff00ff;
     }
 
+    .about-box {
+      position: absolute;
+      top: 15%;
+      right: 2%;
+      width: 25%; /* Genişlik %13 arttırıldı */
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 15px;
+      border: 1px solid #ff00ff;
+      border-radius: 10px;
+    }
+
+    /* Sosyal medya başlığının neon pembe ve yanıp sönme efekti */
     .neon-text {
       color: #ff00ff;
       font-size: 24px;
       font-weight: bold;
       text-transform: uppercase;
       text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
-    }
-
-    .neon-text:hover {
       animation: neon 1.5s ease-in-out infinite alternate;
     }
 
@@ -138,55 +125,66 @@
       }
     }
 
-    .video-container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 50%;
-      height: 60%;
+    /* Neon pembe buton stil */
+    .top-controls button {
+      background-color: transparent;
+      border: 2px solid #ff00ff; /* Neon pembe kenarlık */
+      color: #ff00ff; /* Neon pembe yazı rengi */
+      font-size: 16px;
+      padding: 10px 20px;
+      cursor: pointer;
+      text-transform: uppercase;
+      font-weight: bold;
+      border-radius: 5px;
+      transition: all 0.3s ease;
     }
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-
-    .about-box {
-      position: fixed;
-      top: 20%;
-      right: 2%;
-      width: 270px;
-      background-color: rgba(255, 255, 255, 0.1);
-      padding: 10px;
-      border: 1px solid #ff00ff;
-      border-radius: 10px;
+    .top-controls button:hover {
+      background-color: #ff00ff;
       color: white;
     }
 
-    /* Parıltı efekti */
-    .mouse-follower {
-      position: absolute;
-      pointer-events: none;
-      width: 30px;
-      height: 30px;
-      background-color: rgba(255, 0, 255, 0.5); /* Neon pembe renk */
-      border-radius: 50%;
-      opacity: 0;
-      box-shadow: 0 0 15px rgba(255, 0, 255, 1), 0 0 30px rgba(255, 0, 255, 0.8), 0 0 45px rgba(255, 0, 255, 0.6);
-      animation: sparkle 1s infinite alternate;
+    /* Müzik seç butonuna özel neon pembe stil */
+    .top-controls select {
+      background-color: transparent;
+      border: 2px solid #ff00ff; /* Neon pembe kenarlık */
+      color: #ff00ff; /* Neon pembe yazı rengi */
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    /* Parıltı animasyonu */
+    .top-controls select:hover {
+      background-color: #ff00ff;
+      color: white;
+    }
+
+    /* Fare efektleri */
+    #mouse-follower {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background-color: #ff00ff;
+      pointer-events: none;
+      box-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
+      animation: sparkle 1.5s infinite;
+    }
+
     @keyframes sparkle {
       0% {
-        opacity: 0.5;
         transform: scale(1);
+        opacity: 0.8;
+      }
+      50% {
+        transform: scale(1.5);
+        opacity: 1;
       }
       100% {
-        opacity: 1;
-        transform: scale(1.5);
+        transform: scale(1);
+        opacity: 0.8;
       }
     }
 
@@ -199,17 +197,15 @@
     <div style="color: white; margin-top: 10px;">Yükleniyor...</div>
   </div>
 
+  <div class="greeting" id="greeting"></div>
+
   <div class="top-controls">
     <button onclick="toggleTheme()">Gece/Gündüz</button>
 
     <select id="music-select">
       <option value="">Müzik Seç</option>
-      <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">SoundHelix - Song 1</option>
-      <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">SoundHelix - Song 2</option>
-      <option value="https://www.freemusicarchive.org/file/view/a639bcf8fba34d538e5f876dbca2e3c6.mp3">Egzod - Rise Up feat Neoni</option>
-      <option value="https://www.freemusicarchive.org/file/view/0a1ffba42ec14b5793977a73ff004fe9.mp3">Ketsa - Ascendance</option>
-      <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3">SoundHelix - Song 3</option>
-      <option value="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3">SoundHelix - Song 4</option>
+      <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Egzod__Maestro_Chives__Neoni/Rise_Up_feat_Neoni/Egzod__Maestro_Chives__Neoni_-_Rise_Up_feat_Neoni.mp3">Rise Up</option>
+      <option value="https://files.freemusicarchive.org/storage-freemusicarchive-org/music/no_curator/Ketsa/Ascendance/Ketsa_-_Ascendance.mp3">Ascendance</option>
     </select>
 
     <button onclick="startMusic()">Müziği Başlat</button>
@@ -229,18 +225,10 @@
 
   <div class="about-box">
     <strong>Hakkımda</strong><br><br>
-    Merhaba! Ben Ali Mert. Twitch'te yayın yapıyor, YouTube'da içerik üretiyorum. Beni takip edip
-destek olursanız çok sevinirim hobi olarak başladığım bu işte sizin sayenizde ufakda olsa bir ses
-getirmek istiyorum şimdiden teşekkür ederim <3
+    Merhaba! Ben Ali Mert. Twitch'te yayın yapıyor, YouTube'da içerik üretiyorum. Beni takip edip destek olursanız çok sevinirim hobi olarak başladığım bu işte sizin sayenizde ufakda olsa bir ses getirmek istiyorum şimdiden teşekkür ederim <3
   </div>
 
-  <!-- Video Container -->
-  <div class="video-container">
-    <iframe src="https://www.youtube.com/embed/0MlnxInasEQ?autohide=1&showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-
-  <!-- Fare İzleyici -->
-  <div class="mouse-follower" id="mouse-follower"></div>
+  <div id="mouse-follower"></div>
 
   <script>
     window.addEventListener('load', () => {
@@ -248,6 +236,14 @@ getirmek istiyorum şimdiden teşekkür ederim <3
         document.getElementById("preloader").style.display = "none";
       }, 1000);
     });
+
+    const hour = new Date().getHours();
+    let message = "Hoş geldin!";
+    if (hour >= 6 && hour < 12) message = "Günaydın!";
+    else if (hour >= 12 && hour < 18) message = "İyi günler!";
+    else if (hour >= 18 && hour < 24) message = "İyi akşamlar!";
+    else message = "İyi geceler!";
+    document.getElementById("greeting").textContent = message + " Ali Mert'in sayfasına hoş geldin.";
 
     function toggleTheme() {
       document.body.classList.toggle('dark-theme');
@@ -272,7 +268,6 @@ getirmek istiyorum şimdiden teşekkür ederim <3
       music.volume = parseFloat(document.getElementById("volume-slider").value);
     }
 
-    // Fare hareketini izleyen işlev
     document.addEventListener('mousemove', (event) => {
       const mouseFollower = document.getElementById('mouse-follower');
       mouseFollower.style.left = `${event.clientX - 15}px`;
