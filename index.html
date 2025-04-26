@@ -164,6 +164,23 @@
       }
     }
 
+    /* Video Styling */
+    #video-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 59%;
+      max-width: 900px;
+      z-index: 1;
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+    }
+
     /* Saat Stili */
     .clock {
       position: fixed;
@@ -172,8 +189,6 @@
       font-size: 20px;
       color: #ff00ff;
       font-weight: bold;
-      text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
-      animation: neon 1.5s ease-in-out infinite alternate;
     }
 
   </style>
