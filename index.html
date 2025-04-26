@@ -51,14 +51,6 @@
       100% { transform: rotate(360deg); }
     }
 
-    .greeting {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      font-size: 20px;
-      color: #ff00ff;
-    }
-
     .top-controls {
       position: fixed;
       top: 20px;
@@ -110,6 +102,10 @@
       font-weight: bold;
       text-transform: uppercase;
       text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff, 0 0 15px #ff00ff, 0 0 20px #ff00ff;
+    }
+
+    /* Yanıp sönme efekti sadece fare imleci üzerine geldiğinde */
+    .neon-text:hover {
       animation: neon 1.5s ease-in-out infinite alternate;
     }
 
@@ -133,8 +129,6 @@
     <div class="loader"></div>
     <div style="color: white; margin-top: 10px;">Yükleniyor...</div>
   </div>
-
-  <div class="greeting" id="greeting"></div>
 
   <div class="top-controls">
     <button onclick="toggleTheme()">Gece/Gündüz</button>
@@ -173,14 +167,6 @@ getirmek istiyorum şimdiden teşekkür ederim <3
         document.getElementById("preloader").style.display = "none";
       }, 1000);
     });
-
-    const hour = new Date().getHours();
-    let message = "Hoş geldin!";
-    if (hour >= 6 && hour < 12) message = "Günaydın!";
-    else if (hour >= 12 && hour < 18) message = "İyi günler!";
-    else if (hour >= 18 && hour < 24) message = "İyi akşamlar!";
-    else message = "İyi geceler!";
-    document.getElementById("greeting").textContent = message + " Ali Mert'in sayfasına hoş geldin.";
 
     function toggleTheme() {
       document.body.classList.toggle('dark-theme');
