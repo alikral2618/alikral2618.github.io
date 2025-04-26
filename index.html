@@ -51,14 +51,6 @@
       100% { transform: rotate(360deg); }
     }
 
-    .greeting {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      font-size: 20px;
-      color: #ff00ff;
-    }
-
     .top-controls {
       position: fixed;
       top: 20px;
@@ -83,20 +75,27 @@
     }
 
     .social-link {
+      display: inline-block;
       color: white;
       text-decoration: none;
-      font-size: 20px;
+      font-size: 18px;
+      padding: 10px 20px;
+      background-color: #ff00ff;
+      border-radius: 5px;
+      transition: all 0.3s ease;
     }
 
     .social-link:hover {
-      color: #ff00ff;
+      background-color: #ff77ff;
+      transform: scale(1.1);
+      box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
     }
 
     .about-box {
       position: absolute;
       top: 15%;
       right: 2%;
-      width: 25%; /* Genişlik %13 arttırıldı */
+      width: 22%; /* %5 küçültülmüş genişlik */
       background-color: rgba(255, 255, 255, 0.05);
       padding: 15px;
       border: 1px solid #ff00ff;
@@ -126,8 +125,8 @@
 
     #mouse-follower {
       position: absolute;
-      width: 12px; /* Fare simgesi küçültüldü */
-      height: 12px; /* Fare simgesi küçültüldü */
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
       background-color: #ff00ff;
       pointer-events: none;
@@ -148,40 +147,6 @@
         transform: scale(0.8);
         opacity: 0.8;
       }
-    }
-
-    .top-controls button {
-      background-color: transparent;
-      border: 2px solid #00ff00;
-      color: #00ff00;
-      font-size: 16px;
-      padding: 10px 20px;
-      cursor: pointer;
-      text-transform: uppercase;
-      font-weight: bold;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-
-    .top-controls button:hover {
-      background-color: #00ff00;
-      color: white;
-    }
-
-    .top-controls select {
-      background-color: transparent;
-      border: 2px solid #00ff00;
-      color: #00ff00;
-      padding: 10px 20px;
-      font-size: 16px;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .top-controls select:hover {
-      background-color: #00ff00;
-      color: white;
     }
 
     /* Video Styling */
@@ -219,8 +184,6 @@
     <div class="loader"></div>
     <div style="color: white; margin-top: 10px;">Yükleniyor...</div>
   </div>
-
-  <div class="greeting" id="greeting"></div>
 
   <div class="top-controls">
     <button onclick="toggleTheme()">Gece/Gündüz</button>
