@@ -171,19 +171,6 @@
       }
     }
 
-    /* Saat Stili */
-    .clock {
-      position: fixed;
-      bottom: 10px;
-      right: 10px;
-      font-size: 14px;
-      color: #ff00ff;
-      font-weight: bold;
-      padding: 5px;
-      border-radius: 5px;
-      background-color: rgba(0, 0, 0, 0.5);
-    }
-
   </style>
 </head>
 <body class="dark-theme">
@@ -216,8 +203,6 @@
 
   <div id="mouse-follower"></div>
 
-  <div class="clock" id="clock"></div>
-
   <script>
     window.addEventListener('load', () => {
       setTimeout(() => {
@@ -237,17 +222,6 @@
       document.body.classList.toggle('dark-theme');
       document.body.classList.toggle('light-theme');
     }
-
-    function updateClock() {
-      const now = new Date();
-      const hours = now.getHours().toString().padStart(2, '0');
-      const minutes = now.getMinutes().toString().padStart(2, '0');
-      const seconds = now.getSeconds().toString().padStart(2, '0');
-      document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
-    }
-    
-    setInterval(updateClock, 1000);
-    updateClock();
 
     document.addEventListener('mousemove', (event) => {
       const mouseFollower = document.getElementById('mouse-follower');
