@@ -126,26 +126,26 @@
 
     #mouse-follower {
       position: absolute;
-      width: 30px;
-      height: 30px;
+      width: 12px; /* Fare simgesi küçültüldü */
+      height: 12px; /* Fare simgesi küçültüldü */
       border-radius: 50%;
       background-color: #ff00ff;
       pointer-events: none;
-      box-shadow: 0 0 15px rgba(255, 0, 255, 0.8);
-      animation: sparkle 1.5s infinite;
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+      animation: sparkle 1.5s infinite alternate;
     }
 
     @keyframes sparkle {
       0% {
-        transform: scale(1);
+        transform: scale(0.8);
         opacity: 0.8;
       }
       50% {
-        transform: scale(1.5);
+        transform: scale(1.2);
         opacity: 1;
       }
       100% {
-        transform: scale(1);
+        transform: scale(0.8);
         opacity: 0.8;
       }
     }
@@ -190,7 +190,7 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      width: 67%; /* Videonun genişliği %8 küçültüldü */
+      width: 59%; /* Videonun genişliği %8 küçültüldü */
       max-width: 900px;
       z-index: 1;
     }
@@ -200,6 +200,17 @@
       height: 500px;
       border: none;
     }
+
+    /* Saat Stili */
+    .clock {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      font-size: 20px;
+      color: #ff00ff;
+      font-weight: bold;
+    }
+
   </style>
 </head>
 <body class="dark-theme">
@@ -246,6 +257,8 @@
 
   <div id="mouse-follower"></div>
 
+  <div class="clock" id="clock"></div>
+
   <script>
     window.addEventListener('load', () => {
       setTimeout(() => {
@@ -284,12 +297,23 @@
       music.volume = parseFloat(document.getElementById("volume-slider").value);
     }
 
+    // Saat güncelleme fonksiyonu
+    function updateClock() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
+      document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+    }
+    
+    setInterval(updateClock, 1000);
+    updateClock();
+
     document.addEventListener('mousemove', (event) => {
       const mouseFollower = document.getElementById('mouse-follower');
-      mouseFollower.style.left = `${event.clientX - 15}px`;
-      mouseFollower.style.top = `${event.clientY - 15}px`;
+      mouseFollower.style.left = `${event.clientX - 6}px`; // Küçültülmüş fare simgesi
+      mouseFollower.style.top = `${event.clientY - 6}px`;
     });
   </script>
-
 </body>
 </html>
