@@ -133,7 +133,7 @@
 
   <!-- Ortadaki Klip -->
   <div class="video-wrapper">
-    <iframe width="115%" height="115%"
+    <iframe width="100%" height="100%"
       src="https://www.youtube.com/embed/0MlnxInasEQ"
       title="YouTube video player"
       frameborder="0"
@@ -143,7 +143,7 @@
   </div>
 
   <!-- Egzod, Maestro Chives & Alaina Cross - No Rival | Trap | NCS - Arka Plan Müzikleri -->
-  <audio id="bg-music" src="https://www.bensound.com/bensound-music/sunny.mp3" autoplay loop muted></audio>
+  <audio id="bg-music" src="https://www.youtube.com/watch?v=8hXsU0LRWno" autoplay loop muted></audio>
 
   <script>
     function toggleTheme() {
@@ -159,11 +159,11 @@
       }
     }
 
-    // Sayfaya ilk tıklamada müziği başlat ve sesi %5'e ayarla
+    // Sayfaya ilk tıklamada müziği başlat ve sesi %15'e ayarla
     window.addEventListener('click', function () {
       const music = document.getElementById("bg-music");
       music.muted = false;
-      music.volume = 0.05; // %5 ses seviyesi
+      music.volume = 0.15; // %15 ses seviyesi
       music.play();
     }, { once: true });
   </script>
