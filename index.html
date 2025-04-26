@@ -165,25 +165,27 @@
       color: white;
     }
 
-    /* Fare izi için ışık halkası efekti */
+    /* Parıltı efekti */
     .mouse-follower {
       position: absolute;
       pointer-events: none;
-      width: 20px;
-      height: 20px;
-      background-color: #ff00ff;
+      width: 30px;
+      height: 30px;
+      background-color: rgba(255, 0, 255, 0.5); /* Neon pembe renk */
       border-radius: 50%;
-      opacity: 0.7;
-      transition: transform 0.1s ease;
-      animation: pulse 1s infinite alternate;
+      opacity: 0;
+      box-shadow: 0 0 15px rgba(255, 0, 255, 1), 0 0 30px rgba(255, 0, 255, 0.8), 0 0 45px rgba(255, 0, 255, 0.6);
+      animation: sparkle 1s infinite alternate;
     }
 
-    /* Fare hareketiyle puls efekti */
-    @keyframes pulse {
+    /* Parıltı animasyonu */
+    @keyframes sparkle {
       0% {
+        opacity: 0.5;
         transform: scale(1);
       }
       100% {
+        opacity: 1;
         transform: scale(1.5);
       }
     }
@@ -273,8 +275,8 @@ getirmek istiyorum şimdiden teşekkür ederim <3
     // Fare hareketini izleyen işlev
     document.addEventListener('mousemove', (event) => {
       const mouseFollower = document.getElementById('mouse-follower');
-      mouseFollower.style.left = `${event.clientX - 10}px`;
-      mouseFollower.style.top = `${event.clientY - 10}px`;
+      mouseFollower.style.left = `${event.clientX - 15}px`;
+      mouseFollower.style.top = `${event.clientY - 15}px`;
     });
   </script>
 
