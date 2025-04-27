@@ -13,15 +13,17 @@
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       transition: all 0.5s ease;
-      background: url('https://i.pinimg.com/originals/9b/33/bc/9b33bcd8319dd6ff1e9fc2a652137c76.gif') no-repeat center center fixed;
+      background: url('https://i.pinimg.com/originals/08/e4/1c/08e41c2059323fad9b46ea6a18d1b8ef.gif') no-repeat center center fixed;
       background-size: cover;
     }
 
     body.dark-theme {
+      background-color: black;
       color: white;
     }
 
     body.light-theme {
+      background-color: white;
       color: black;
     }
 
@@ -110,9 +112,6 @@
     .social-link.steam { background-color: #1B2838; }
     .social-link.twitch { background-color: #6441A5; }
     .social-link.youtube { background-color: #FF0000; }
-    .social-link.tiktok { background-color: #000000; }
-    .social-link.donate { background-color: #00A86B; }
-    .social-link.freeskin { background-color: #FFD700; }
 
     .about-box {
       position: absolute;
@@ -190,15 +189,6 @@
       border: none;
     }
 
-    /* Tarih ve Saat Stil */
-    #date-time {
-      color: #ff00ff;
-      font-size: 16px;
-      font-weight: bold;
-      margin-top: 10px;
-      text-align: center;
-    }
-
     /* RGB Şerit (Hareketli) */
     .rgb-stripe {
       width: 100%;
@@ -244,9 +234,9 @@
     <a class="social-link steam" href="https://steamcommunity.com/id/BrownFast/">Steam</a>
     <a class="social-link twitch" href="https://www.twitch.tv/brownfast">Twitch</a>
     <a class="social-link youtube" href="https://youtube.com/@j3yerrortr">YouTube</a>
-    <a class="social-link tiktok" href="https://www.tiktok.com/@yourusername">TikTok</a>
-    <a class="social-link donate" href="https://www.donate.com/yourusername">Donate</a>
-    <a class="social-link freeskin" href="https://www.freeskin.com/yourusername">Freeskin</a>
+    <a class="social-link tiktok" href="https://www.tiktok.com/@alimertkkarakaya">TikTok</a>
+    <a class="social-link donate" href="https://www.paypal.me/alimertkkarakaya">Donate</a>
+    <a class="social-link freeskin" href="https://www.freeskin.com">Free Skins</a>
   </div>
 
   <div class="about-box">
@@ -254,7 +244,6 @@
     Merhaba! Ben Ali Mert. Twitch'te yayın yapıyor, YouTube'da içerik üretiyorum. Beni takip edip destek olursanız çok sevinirim hobi olarak başladığım bu işte sizin sayenizde ufakda olsa bir ses getirmek istiyorum şimdiden teşekkür ederim <3
   </div>
 
-  <!-- RGB Hareketli Şerit Hakkımda kısmının altına -->
   <div class="rgb-stripe"></div>
 
   <div id="mouse-follower"></div>
@@ -279,7 +268,6 @@
       document.body.classList.toggle('light-theme');
     }
 
-    // Tarih, Saat, Gün ve Ay hesaplama
     function updateDateTime() {
       const now = new Date();
       const days = ["Pazar", "Pazartesi", "Salı", "Çarşamba", "Perşembe", "Cuma", "Cumartesi"];
@@ -296,21 +284,8 @@
       document.getElementById('date-time').textContent = dateTime;
     }
 
-    // Güncel saati her saniye güncelle
-    function updateCurrentTime() {
-      const now = new Date();
-      const hours = now.getHours().toString().padStart(2, "0");
-      const minutes = now.getMinutes().toString().padStart(2, "0");
-      const seconds = now.getSeconds().toString().padStart(2, "0");
-
-      const currentTime = `${hours}:${minutes}:${seconds}`;
-      document.getElementById('current-time').textContent = `Güncel Saat: ${currentTime}`;
-    }
-
     setInterval(updateDateTime, 1000);
-    setInterval(updateCurrentTime, 1000);
     updateDateTime();
-    updateCurrentTime();
 
     document.addEventListener('mousemove', (event) => {
       const mouseFollower = document.getElementById('mouse-follower');
