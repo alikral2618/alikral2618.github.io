@@ -253,19 +253,22 @@
 
   <script>
     window.addEventListener('load', () => {
+      // Yükleme tamamlandığında temayı saat ile belirle
+      const hour = new Date().getHours();
+      if (hour >= 6 && hour < 18) {
+        document.body.classList.add('light-theme');
+        document.body.classList.remove('dark-theme');
+      } else {
+        document.body.classList.add('dark-theme');
+        document.body.classList.remove('light-theme');
+      }
+
       setTimeout(() => {
         document.getElementById("preloader").style.display = "none";
       }, 1000);
     });
 
-    const hour = new Date().getHours();
-    let message = "Hoş geldin!";
-    if (hour >= 6 && hour < 12) message = "Günaydın!";
-    else if (hour >= 12 && hour < 18) message = "İyi günler!";
-    else if (hour >= 18 && hour < 24) message = "İyi akşamlar!";
-    else message = "İyi geceler!";
-    document.getElementById("greeting").textContent = message + " Ali Mert'in sayfasına hoş geldin.";
-
+    // Gece ve gündüz modunu değiştiren fonksiyon
     function toggleTheme() {
       document.body.classList.toggle('dark-theme');
       document.body.classList.toggle('light-theme');
