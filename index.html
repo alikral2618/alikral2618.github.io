@@ -13,8 +13,6 @@
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
       transition: all 0.5s ease;
-      background: url('https://i.pinimg.com/originals/16/2a/15/162a1593f94e44ad0079cb12d9a66b35.gif') no-repeat center center fixed;
-      background-size: cover;
     }
 
     body.dark-theme {
@@ -112,6 +110,14 @@
     .social-link.steam { background-color: #1B2838; }
     .social-link.twitch { background-color: #6441A5; }
     .social-link.youtube { background-color: #FF0000; }
+    /* Yeni Eklenecek Bağlantılar */
+    .social-link.tiktok { background-color: #69C9D0; }
+    .social-link.donate { background-color: #FF4500; }
+    .social-link.freeskin { background-color: #32CD32; }
+
+    .social-link.tiktok:hover { background-color: #56b9c2; }
+    .social-link.donate:hover { background-color: #ff6f3a; }
+    .social-link.freeskin:hover { background-color: #28a745; }
 
     .about-box {
       position: absolute;
@@ -189,15 +195,6 @@
       border: none;
     }
 
-    /* Tarih ve Saat Stil */
-    #date-time {
-      color: #ff00ff;
-      font-size: 16px;
-      font-weight: bold;
-      margin-top: 10px;
-      text-align: center;
-    }
-
     /* RGB Şerit (Hareketli) */
     .rgb-stripe {
       width: 100%;
@@ -239,10 +236,13 @@
 
   <div class="container">
     <div class="neon-text">Sosyal Medya Bağlantılarım</div>
-    <a class="social-link instagram" href="https://www.instagram.com/alimertkkarakaya">Instagram</a>
-    <a class="social-link steam" href="https://steamcommunity.com/id/BrownFast/">Steam</a>
-    <a class="social-link twitch" href="https://www.twitch.tv/brownfast">Twitch</a>
-    <a class="social-link youtube" href="https://youtube.com/@j3yerrortr">YouTube</a>
+    <a class="social-link instagram" href="https://www.instagram.com/alimertkkarakaya" target="_blank">Instagram</a>
+    <a class="social-link steam" href="https://steamcommunity.com/id/BrownFast/" target="_blank">Steam</a>
+    <a class="social-link twitch" href="https://www.twitch.tv/brownfast" target="_blank">Twitch</a>
+    <a class="social-link youtube" href="https://youtube.com/@j3yerrortr" target="_blank">YouTube</a>
+    <a class="social-link tiktok" href="https://www.tiktok.com/@yourusername" target="_blank">TikTok</a>
+    <a class="social-link donate" href="https://www.donate.com/yourusername" target="_blank">Donate</a>
+    <a class="social-link freeskin" href="https://www.freeskinwebsite.com/yourusername" target="_blank">Bedava Skin</a>
   </div>
 
   <div class="about-box">
@@ -292,8 +292,21 @@
       document.getElementById('date-time').textContent = dateTime;
     }
 
+    // Güncel saati her saniye güncelle
+    function updateCurrentTime() {
+      const now = new Date();
+      const hours = now.getHours().toString().padStart(2, "0");
+      const minutes = now.getMinutes().toString().padStart(2, "0");
+      const seconds = now.getSeconds().toString().padStart(2, "0");
+
+      const currentTime = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('current-time').textContent = `Güncel Saat: ${currentTime}`;
+    }
+
     setInterval(updateDateTime, 1000);
+    setInterval(updateCurrentTime, 1000);
     updateDateTime();
+    updateCurrentTime();
 
     document.addEventListener('mousemove', (event) => {
       const mouseFollower = document.getElementById('mouse-follower');
